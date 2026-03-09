@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>// CyberPortfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- Scanlines overlay -->
+<div class="scanlines"></div>
+
+<!-- Matrix Rain -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="../index.html" class="nav-logo">CYBER<span>-TECH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html">Accueil</a></li>
+            <li><a href="../index.html#about">Profil</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../index.html#projects">Projets</a></li>
+        </ul>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>SYSTEM::ONLINE</span>
+        </div>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══ PROJECT HERO ═══ -->
+<div class="project-page-hero">
+    <div class="project-page-hero-inner">
+        <div class="project-page-breadcrumb">
+            <a href="index.html">Accueil</a>
+            <span class="sep">/</span>
+            <a href="index.html#projects">Projets</a>
+            <span class="sep">/</span>
+            <span style="color: var(--text-primary);">NetGuard SIEM</span>
+        </div>
+        <h1 class="project-page-title">
+            <span class="glitch-text" data-text="NetGuard SIEM">NetGuard SIEM</span>
+        </h1>
+        <div class="project-page-meta">
+            <div class="project-page-meta-item">
+                <span class="meta-label">Statut:</span>
+                <span class="project-status status-active">Active</span>
+            </div>
+            <div class="project-page-meta-item">
+                <span class="meta-label">Durée:</span>
+                <span class="meta-value">6 mois</span>
+            </div>
+            <div class="project-page-meta-item">
+                <span class="meta-label">Rôle:</span>
+                <span class="meta-value">Lead Architecte Sécurité</span>
+            </div>
+            <div class="project-page-meta-item">
+                <span class="meta-label">Équipe:</span>
+                <span class="meta-value">3 personnes</span>
+            </div>
+        </div>
+        <div class="project-page-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">ELK Stack</span>
+            <span class="project-tag">Docker</span>
+            <span class="project-tag">Suricata</span>
+            <span class="project-tag">Grafana</span>
+            <span class="project-tag">Ansible</span>
+        </div>
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ PROJECT BODY ═══ -->
+<div class="project-page-body">
+
+    <!-- Main Content -->
+    <div class="project-page-main">
+
+        <!-- Screenshot -->
+        <div class="project-screenshot animate-on-scroll">
+            <a href="../1_Ressources/Img_Outils/KeePassXC_database_view.png" target="_blank" rel="noopener noreferrer">
+                <img src="../1_Ressources/Img_Outils/KeePassXC_database_view.png" alt="KeePassXC">
+            </a>
+        </div>
+
+        <!-- Description -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">📋 Description</h2>
+            <p>
+                NetGuard SIEM est une plateforme complète de Security Information and Event Management
+                (SIEM) conçue pour les petites et moyennes infrastructures. Elle permet de centraliser
+                les logs de sécurité, détecter les anomalies en temps réel, et générer des alertes
+                automatisées pour les équipes SOC.
+            </p>
+            <p>
+                Le système repose sur une architecture modulaire basée sur la stack ELK (Elasticsearch,
+                Logstash, Kibana) enrichie de règles Suricata personnalisées et d'un moteur d'analyse
+                comportementale développé en Python.
+            </p>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">🎯 Objectifs</h2>
+            <ul>
+                <li>Centraliser les logs de multiples sources (firewalls, serveurs, endpoints)</li>
+                <li>Détecter les tentatives d'intrusion et comportements anormaux en temps réel</li>
+                <li>Automatiser la réponse aux incidents de sécurité courants</li>
+                <li>Fournir des dashboards interactifs pour le monitoring et le reporting</li>
+                <li>Assurer la conformité avec les standards de sécurité (ISO 27001, RGPD)</li>
+            </ul>
+        </div>
+
+        <!-- Architecture -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">🏗️ Architecture Technique</h2>
+            <p>
+                L'architecture suit un modèle microservices conteneurisé avec Docker Compose,
+                permettant une scalabilité horizontale et un déploiement rapide :
+            </p>
+            <div class="code-block" data-lang="yaml">
+                <code># docker-compose.yml - Stack NetGuard SIEM
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: elasticsearch:8.11.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=true
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+  logstash:
+    image: logstash:8.11.0
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/config:/usr/share/logstash/config
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: kibana:8.11.0
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+
+  suricata:
+    build: ./suricata
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - SYS_NICE
+
+  netguard-engine:
+    build: ./engine
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ALERT_WEBHOOK=${WEBHOOK_URL}
+    depends_on:
+      - elasticsearch</code>
+            </div>
+        </div>
+
+        <!-- Fonctionnalités -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">⚙️ Fonctionnalités Clés</h2>
+            <ul>
+                <li><strong style="color: var(--neon-cyan);">Collecte multi-sources :</strong> Ingestion de logs via Syslog, Beats, et API REST personnalisée</li>
+                <li><strong style="color: var(--neon-cyan);">Détection IDS/IPS :</strong> Règles Suricata personnalisées avec plus de 200 signatures</li>
+                <li><strong style="color: var(--neon-cyan);">Analyse comportementale :</strong> Moteur ML pour la détection d'anomalies réseau</li>
+                <li><strong style="color: var(--neon-cyan);">Alerting automatisé :</strong> Notifications via Slack, email, et webhooks</li>
+                <li><strong style="color: var(--neon-cyan);">Dashboard temps réel :</strong> Visualisation Kibana avec cartes de menaces géolocalisées</li>
+                <li><strong style="color: var(--neon-cyan);">Rapports de conformité :</strong> Génération automatique de rapports ISO 27001</li>
+            </ul>
+        </div>
+
+        <!-- Code exemple -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">💻 Exemple de Code</h2>
+            <p>Extrait du moteur de détection d'anomalies :</p>
+            <div class="code-block" data-lang="python">
+                <code># engine/detector.py - Anomaly Detection Engine
+import numpy as np
+from elasticsearch import Elasticsearch
+from datetime import datetime, timedelta
+
+class AnomalyDetector:
+    def __init__(self, es_url, threshold=2.5):
+        self.es = Elasticsearch([es_url])
+        self.threshold = threshold
+        self.baseline = {}
+
+    def compute_baseline(self, index, field, hours=24):
+        """Compute statistical baseline for a given field."""
+        query = {
+            "range": {
+                "@timestamp": {
+                    "gte": f"now-{hours}h",
+                    "lte": "now"
+                }
+            }
+        }
+        agg = {
+            "stats": {"field": field},
+            "percentiles": {"field": field, "percents": [95, 99]}
+        }
+
+        result = self.es.search(
+            index=index,
+            query=query,
+            aggs={"field_stats": agg},
+            size=0
+        )
+
+        stats = result["aggregations"]["field_stats"]
+        self.baseline[field] = {
+            "mean": stats["stats"]["avg"],
+            "std": stats["stats"]["std_deviation"],
+            "p95": stats["percentiles"]["values"]["95.0"]
+        }
+        return self.baseline[field]
+
+    def detect(self, field, current_value):
+        """Detect if current value is anomalous."""
+        if field not in self.baseline:
+            return False, 0
+
+        b = self.baseline[field]
+        z_score = abs(current_value - b["mean"]) / b["std"]
+
+        return z_score > self.threshold, round(z_score, 2)</code>
+            </div>
+        </div>
+
+        <!-- Résultats -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">📊 Résultats</h2>
+            <ul>
+                <li>Réduction de <strong style="color: var(--neon-green);">73%</strong> du temps moyen de détection d'incidents (MTTD)</li>
+                <li>Traitement de plus de <strong style="color: var(--neon-green);">50 000 événements/minute</strong> en production</li>
+                <li>Taux de faux positifs réduit à <strong style="color: var(--neon-green);">moins de 2%</strong> grâce au ML</li>
+                <li>Déploiement automatisé en <strong style="color: var(--neon-green);">moins de 15 minutes</strong> via Ansible</li>
+            </ul>
+        </div>
+
+        <!-- Retour -->
+        <a href="index.html#projects" class="back-link animate-on-scroll">← Retour aux projets</a>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="project-page-sidebar">
+
+        <!-- Infos projet -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Infos Projet</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Type:</span>
+                <span class="s-value">SIEM / SOC</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Statut:</span>
+                <span class="s-value" style="color: var(--neon-green);">Active</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Version:</span>
+                <span class="s-value">2.3.1</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Licence:</span>
+                <span class="s-value">MIT</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Début:</span>
+                <span class="s-value">Jan 2025</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Mise à jour:</span>
+                <span class="s-value">Juin 2025</span>
+            </div>
+        </div>
+
+        <!-- Liens -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Liens</h3>
+            <ul class="sidebar-links">
+                <li><a href="#">📂 Repository GitHub</a></li>
+                <li><a href="#">🔗 Demo en ligne</a></li>
+                <li><a href="#">📖 Documentation</a></li>
+                <li><a href="#">🐛 Issues / Bugs</a></li>
+                <li><a href="#">📊 Changelog</a></li>
+            </ul>
+        </div>
+
+        <!-- Stack technique -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Stack Technique</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Backend:</span>
+                <span class="s-value">Python 3.11</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Search:</span>
+                <span class="s-value">Elasticsearch 8</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Pipeline:</span>
+                <span class="s-value">Logstash</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Dashboard:</span>
+                <span class="s-value">Kibana + Grafana</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">IDS:</span>
+                <span class="s-value">Suricata 7</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Infra:</span>
+                <span class="s-value">Docker Compose</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Deploy:</span>
+                <span class="s-value">Ansible</span>
+            </div>
+        </div>
+
+        <!-- Chronologie -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Chronologie</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Jan 2025</div>
+                    <div class="timeline-text">Conception de l'architecture et POC initial</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mar 2025</div>
+                    <div class="timeline-text">Intégration Suricata + moteur de détection ML</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mai 2025</div>
+                    <div class="timeline-text">Dashboards Kibana + alerting automatisé</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Juin 2025</div>
+                    <div class="timeline-text">Mise en production v2.3 + rapports conformité</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div>
+                <div class="ascii-art">
+ ██████╗██╗   ██╗██████╗ ███████╗██████╗
+██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗
+██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝
+██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗
+╚██████╗   ██║   ██████╔╝███████╗██║  ██║
+ ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝
+      ══ PORTFOLIO v2.0 ══</div>
+                <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); max-width: 350px;">
+                    Navigating the digital frontier.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#about">Profil</a></li>
+                    <li><a href="index.html#skills">Compétences</a></li>
+                    <li><a href="index.html#projects">Projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Sys_Info</h4>
+                <div class="system-info">
+                    <div>
+                        <span class="sys-label">Heure:</span>
+                        <span class="sys-value" id="liveClock">--:--:--</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Ping:</span>
+                        <span class="sys-value" id="pingValue">-- ms</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">OS:</span>
+                        <span class="sys-value" id="osInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Navigateur:</span>
+                        <span class="sys-value" id="browserInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">IP Publique:</span>
+                        <span class="sys-value" id="userIP">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                <span>&copy;</span> <span id="year">2025</span> Cyber-Tech // All rights reserved. Built with <span style="color: var(--neon-magenta);">♥</span> & <span style="color: var(--neon-cyan);">code</span>
+            </p>
+            <p class="footer-terminal">
+                root@cyber:~$ <span id="footerCmd"></span><span style="animation: typing-cursor 0.7s step-end infinite; border-right: 2px solid var(--neon-green);">&nbsp;</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript externe -->
+<script src="../js/main.js"></script>
+</body>
+</html>

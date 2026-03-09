@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>// P1_KeePassXC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<!-- Scanlines overlay -->
+<div class="scanlines"></div>
+
+<!-- Matrix Rain -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">CYBER<span>-TECH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../../index.html">Accueil</a></li>
+            <li><a href="../../index.html#about">Profil</a></li>
+            <li><a href="../../index.html#skills">Skills</a></li>
+            <li><a href="../../index.html#projects">Projets</a></li>
+        </ul>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>SYSTEM::ONLINE</span>
+        </div>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══ PROJECT HERO ═══ -->
+<div class="project-page-hero">
+    <div class="project-page-hero-inner">
+        <div class="project-page-breadcrumb">
+            <a href="../../index.html">Accueil</a>
+            <span class="sep">/</span>
+            <a href="../../index.html#projects">Projets</a>
+            <span class="sep">/</span>
+            <span style="color: var(--text-primary);">KeePassXC</span>
+        </div>
+        <h1 class="project-page-title">
+            <span class="glitch-text" data-text="KeePassXC">KeePassXC</span>
+        </h1>
+        <div class="project-page-meta">
+            <div class="project-page-meta-item">
+                <span class="meta-label">Statut:</span>
+                <span class="project-status status-active">Active</span>
+            </div>
+            <div class="project-page-meta-item">
+                <span class="meta-label">Rôle:</span>
+                <span class="meta-value">Coffre-fort Numérique</span>
+            </div>
+        </div>
+        <div class="project-page-tags">
+            <span class="project-tag">OpenSource</span>
+            <span class="project-tag">Communautaire</span>
+            <span class="project-tag">Github</span>
+        </div>
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ PROJECT BODY ═══ -->
+<div class="project-page-body">
+
+    <!-- Main Content -->
+    <div class="project-page-main">
+
+        <!-- Screenshot -->
+        <div class="project-screenshot animate-on-scroll">
+            <a href="../1_Ressources/Img_Outils/KeePassXC_database_view.png" target="_blank" rel="noopener noreferrer">
+                <img src="../1_Ressources/Img_Outils/KeePassXC_database_view.png" alt="KeePassXC">
+            </a>
+        </div>
+
+        <!-- Description -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Description</h2>
+            <p>
+                KeePassXC (KeePass Cross-Platform Community Edition) est un gestionnaire de mots de passe open source, 
+                gratuit et multiplateforme (Windows, macOS, Linux). Fork moderne de KeePassX, il vous permet de stocker mots de passe,
+                clefs d’accès et TOTP dans un fichier local chiffré (AES-256 / ChaCha20), 
+                avec une interface intuitive et des fonctionnalités avancées (auto-typage, intégration navigateur, YubiKey).
+            </p>
+            <p>
+                KeePassXC combine interface réactive, simplicité d’usage et performances légères, le tout stocké localement sur votre appareil ou sur un support dédié (version portable).
+                Contrairement aux solutions cloud, aucune donnée ne transite par des serveurs tiers, ce qui en fait un outil fiable et auditable. 
+                Recommandé par l’ANSSI et l’EFF.
+            </p>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Objectifs</h2>
+            <ul>
+                <li>Centraliser et protéger tous vos identifiants et données sensibles dans un coffre-fort chiffré local, 
+                    accessible uniquement par vous, sans jamais exposer vos informations sur Internet ni dépendre d’un service cloud propriétaire.
+                </li>
+            </ul>
+        </div>
+
+        <!-- Fonctionnalités -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Points forts</h2>
+            <ul>
+                <li><strong style="color: var(--neon-cyan);">100% Hors-ligne :</strong> Aucune donnée n'est envoyée sur le cloud. La base de données reste sur votre machine (mais peut être synchronisée manuellement via Nextcloud, Google Drive, etc.).</li>
+                <li><strong style="color: var(--neon-cyan);">Générateur de mots de passe :</strong> Création de phrases secrètes ou de mots de passe complexes personnalisables.</li>
+                <li><strong style="color: var(--neon-cyan);">Authentification multifacteur (2FA) :</strong> Générateur de codes TOTP intégré directement dans l'application.</li>
+                <li><strong style="color: var(--neon-cyan);">Auto-Type (Saisie automatique) :</strong> Le logiciel peut simuler les frappes au clavier pour remplir les identifiants sur n'importe quelle application de bureau (pas seulement le navigateur).</li>
+                <li><strong style="color: var(--neon-cyan);">Intégration YubiKey :</strong> Sécurisation de l'ouverture du coffre-fort grâce à une clé physique (Challenge-Response).</li>
+                <li><strong style="color: var(--neon-cyan);">Protection contre les attaques par force brute (KDF) :</strong> Utilisation de Argon2 pour ralentir les tentatives de déchiffrement.</li>
+                <li><strong style="color: var(--neon-cyan);">Gestion des identifiants :</strong> Organisation par groupes et sous-groupes : Classement des mots de passe (travail, banque, réseaux sociaux, etc.).</li>
+                <li><strong style="color: var(--neon-cyan);">Analyse de sécurité de la base (Health Check) :</strong> Détecte les mots de passe faibles, réutilisés ou expirés.</li>
+                <li><strong style="color: var(--neon-cyan);">Verrouillage automatique :</strong> La base peut se verrouiller automatiquement après un temps d’inactivité ou lors du verrouillage de la session.</li>
+                <li><strong style="color: var(--neon-cyan);">Mode portable :</strong> Peut être utilisé depuis une clef USB sans installation.</li>
+
+
+            </ul>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Conclusion</h2>
+            <p>   
+                KeePassXC représente une solution mature, sécurisée et transparente pour la gestion des mots de passe. 
+                Son approche offline-first et open source en fait un outil de confiance dans un écosystème où les violations de données de gestionnaires cloud font régulièrement la une.
+            </p> 
+            <p>
+                Essayez-le ! Un petit temps d’adaptation est nécessaire pour les non-initiés, mais une fois habitué, il est difficile de s’en passer. Si vous découvrez ce logiciel, vous trouverez sur le site tous les liens nécessaires pour bien commencer.
+            </p>    
+            <p>
+                Merci à toute la communauté KeePassXC pour son travail et le partage de ce projet.
+                Si vous utilisez ces outils, pensez à soutenir les projets open source : respectez le travail des contributeurs, signalez les bugs si vous le pouvez et partagez vos retours.
+            </p>  
+            <p> 
+                Protégez vos données et votre esprit,<br>
+                @+
+            </p>
+
+        </div>
+
+        <!-- Retour -->
+        <a href="../../index.html#projects" class="back-link animate-on-scroll">← Retour aux projets</a>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="project-page-sidebar">
+
+        <!-- Infos projet -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Informations</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Type:</span>
+                <span class="s-value">Gestionnaire de mots de passe</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Statut:</span>
+                <span class="s-value" style="color: var(--neon-green);">Active</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Version Actuel:</span>
+                <span class="s-value">2.7.11</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Licence:</span>
+                <span class="s-value">GNU GPL v2 / GPL v3</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Début:</span>
+                <span class="s-value">2016</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Mise à jour:</span>
+                <span class="s-value">Régulières</span>
+            </div>
+        </div>
+
+        <!-- Liens -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Liens</h3>
+            <ul class="sidebar-links">
+                <li><a href="https://github.com/keepassxreboot/keepassxc" target="_blank" rel="noopener noreferrer">📂 Repository GitHub</a></li>
+                <li><a href="https://keepassxc.org" target="_blank" rel="noopener noreferrer">🔗 Site officiel</a></li>
+                <li><a href="https://keepassxc.org/docs/KeePassXC_GettingStarted" target="_blank" rel="noopener noreferrer">📖 Documentation</a></li>
+                <li><a href="https://github.com/keepassxreboot/keepassxc/issues" target="_blank" rel="noopener noreferrer">🐛 Issues / Bugs</a></li>
+                <li><a href="https://keepassxc.org/blog/" target="_blank" rel="noopener noreferrer">📊 Changelog</a></li>
+                <li><a href="https://www.youtube.com/watch?v=qSHCbqwbWo8" target="_blank" rel="noopener noreferrer">🌐 Excellente vidéo d'IT-Connect</a></li>
+            </ul>
+        </div>
+
+        <!-- Stack technique -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Stack Technique</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Backend:</span>
+                <span class="s-value">C++</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Frontend:</span>
+                <span class="s-value">Qt 5 / Qt 6</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Chiffrement:</span>
+                <span class="s-value">Botan</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">KDF:</span>
+                <span class="s-value">Argon2id</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Cipher:</span>
+                <span class="s-value">AES-256-CBC, ChaCha20, Twofish</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Format BDD:</span>
+                <span class="s-value">KDBX 4.1</span>
+            </div>
+        </div>
+
+        <!-- Chronologie -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Chronologie</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2016</div>
+                    <div class="timeline-text">Naissance de KeePassXC | Fork communautaire de KeePassX </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-text">v2.5 / v2.6 — Maturité | Support YubiKey amélioré </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-text">v2.7.x — Sécurité renforcée | Migration vers Qt 6</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-text">v2.7.9+ — Présent | Maintenance active | Communauté grandissante (26k+ ⭐ GitHub) </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div>
+                <div class="ascii-art">
+ ██████╗██╗   ██╗██████╗ ███████╗██████╗
+██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗
+██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝
+██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗
+╚██████╗   ██║   ██████╔╝███████╗██║  ██║
+ ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝
+      ══ PORTFOLIO v2.0 ══</div>
+                <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); max-width: 350px;">
+                    Navigating the digital frontier.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../../index.html#about">Profil</a></li>
+                    <li><a href="../../index.html#skills">Compétences</a></li>
+                    <li><a href="../../index.html#projects">Projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Sys_Info</h4>
+                <div class="system-info">
+                    <div>
+                        <span class="sys-label">Heure:</span>
+                        <span class="sys-value" id="liveClock">--:--:--</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Ping:</span>
+                        <span class="sys-value" id="pingValue">-- ms</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">OS:</span>
+                        <span class="sys-value" id="osInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Navigateur:</span>
+                        <span class="sys-value" id="browserInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">IP Publique:</span>
+                        <span class="sys-value" id="userIP">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                <span>&copy;</span> <span id="year">2025</span> Cyber-Tech // All rights reserved. Built with <span style="color: var(--neon-magenta);">♥</span> & <span style="color: var(--neon-cyan);">code</span>
+            </p>
+            <p class="footer-terminal">
+                root@cyber:~$ <span id="footerCmd"></span><span style="animation: typing-cursor 0.7s step-end infinite; border-right: 2px solid var(--neon-green);">&nbsp;</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript externe -->
+<script src="../../js/main.js"></script>
+</body>
+</html>

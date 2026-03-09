@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberPortfolio // Nexus_v2.0</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Scanlines overlay -->
+<div class="scanlines"></div>
+
+<!-- Matrix Rain -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#hero" class="nav-logo">CYBER<span>-TECH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#hero" class="active">Accueil</a></li>
+            <li><a href="#about">Profil</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projets</a></li>
+        </ul>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>SYSTEM::ONLINE</span>
+        </div>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══ HERO SECTION ═══ -->
+<section id="hero">
+    <div class="hero-content">
+        <p class="hero-prefix"><span>$</span> ./initialize_portfolio.sh</p>
+        <h1 class="hero-title">
+            <span class="glitch-text" data-text="CYBER-TECH">CYBER-TECH</span><br>
+            <span style="color: var(--neon-magenta);">CORPORATION</span>
+        </h1>
+        <p class="hero-subtitle">Focus: Systèmes &bull; Réseaux &bull; Sécurité informatique</p>
+        <div class="typewriter-container">
+            <span id="typewriter"></span>
+        </div>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn-cyber btn-primary">Voir les Articles</a>
+            <a href="#about" class="btn-cyber btn-secondary">En savoir plus</a>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <span></span>
+    </div>
+</section>
+
+<!-- ═══ ABOUT SECTION ═══ -->
+<section id="about">
+    <div class="section-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-tag">// 01. Identification</p>
+            <h2 class="section-title">WHOAMI ?</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="about-grid">
+            <div class="avatar-wrapper animate-on-scroll">
+                <div class="avatar-frame">
+                    <div class="avatar-inner">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#ff00de;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="85" r="40" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                            <circle cx="100" cy="85" r="35" fill="rgba(0,240,255,0.05)"/>
+                            <rect x="82" y="78" width="14" height="5" rx="1" fill="#00f0ff">
+                                <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite"/>
+                            </rect>
+                            <rect x="104" y="78" width="14" height="5" rx="1" fill="#ff00de">
+                                <animate attributeName="opacity" values="1;0.3;1" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+                            </rect>
+                            <path d="M60 160 Q60 130 100 125 Q140 130 140 160" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                            <path d="M65 155 Q65 135 100 130 Q135 135 135 155" fill="rgba(0,240,255,0.08)"/>
+                            <line x1="100" y1="125" x2="100" y2="110" stroke="#00f0ff" stroke-width="1" opacity="0.5"/>
+                            <line x1="75" y1="95" x2="65" y2="105" stroke="#ff00de" stroke-width="1" opacity="0.5"/>
+                            <line x1="125" y1="95" x2="135" y2="105" stroke="#ff00de" stroke-width="1" opacity="0.5"/>
+                            <circle cx="100" cy="110" r="2" fill="#00f0ff" opacity="0.8">
+                                <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+                            </circle>
+                            <path d="M75 75 Q100 65 125 75" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.6"/>
+                            <line x1="100" y1="45" x2="100" y2="55" stroke="#39ff14" stroke-width="1.5"/>
+                            <circle cx="100" cy="43" r="3" fill="#39ff14" opacity="0.8">
+                                <animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.5s" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                        <div class="avatar-glitch-overlay"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content animate-on-scroll">
+                <h3>> Chargement du profil...</h3>
+                <p>
+                    Je construis mon parcours dans l’informatique à travers une reconversion entamée en 2021, en étudiant, 
+                    en explorant différentes compétences et en me spécialisant progressivement dans les domaines qui me passionnent. 
+                    Cela nourrit ma curiosité et l'envie d’apprendre continuellement.
+                    Les articles présentés reflètent ma résolution à partager des outils et technologies que je trouve intéressants, 
+                    l’idée est de rendre accessibles ces ressources à tous ceux qui s’y intéressent ou les découvrent. 
+                </p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Alias:</span>
+                        <span class="value">Cyber-Ops</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Localisation:</span>
+                        <span class="value">France // Vendée</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Spécialité:</span>
+                        <span class="value">Infrastructure & Systèmes</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Statut:</span>
+                        <span class="value" style="color: var(--neon-green);">Disponible</span>
+                    </div>
+                </div>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Diplôme</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="4">0</div>
+                        <div class="stat-label">Année exp.</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="1">0</div>
+                        <div class="stat-label">Articles</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">% Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ SKILLS SECTION ═══ -->
+<section id="skills">
+    <div class="section-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-tag">// 02. Compétences</p>
+            <h2 class="section-title">Arsenal Technique</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="skills-layout">
+            <div class="skills-bars animate-on-scroll">
+                <!-- Systèmes -->
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="icon">🖥️</span> Systèmes
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Linux</span>
+                            <span class="skill-bar-pct">50%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill cyan" data-width="50"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Windows</span>
+                            <span class="skill-bar-pct">75%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill cyan" data-width="75"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Virtualisation</span>
+                            <span class="skill-bar-pct">62%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill cyan" data-width="62"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Gestion de Parc</span>
+                            <span class="skill-bar-pct">84%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill cyan" data-width="84"></div></div>
+                    </div>
+                </div>
+
+                <!-- Réseaux -->
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="icon">🌐</span> Réseaux
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">TCP/IP & Routage</span>
+                            <span class="skill-bar-pct">40%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill magenta" data-width="40"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Switching & Vlan</span>
+                            <span class="skill-bar-pct">60%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill magenta" data-width="60"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">DNS, DHCP, ADDS, RDS, WDS/MDT</span>
+                            <span class="skill-bar-pct">80%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill magenta" data-width="80"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Firewall</span>
+                            <span class="skill-bar-pct">66%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill magenta" data-width="66"></div></div>
+                    </div>
+                </div>
+
+                <!-- Cybersécurité -->
+                <div class="skill-category">
+                    <div class="skill-category-title">
+                        <span class="icon">🛡️</span> Sécurité Informatique
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Sauvegarde & Restauration</span>
+                            <span class="skill-bar-pct">85%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="85"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">VPN & Proxy</span>
+                            <span class="skill-bar-pct">50%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="50"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Hardening & Compliance</span>
+                            <span class="skill-bar-pct">57%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="57"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-header">
+                            <span class="skill-bar-name">Scripting (Bash/Powershell)</span>
+                            <span class="skill-bar-pct">20%</span>
+                        </div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill green" data-width="20"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ PROJECTS SECTION ═══ -->
+<section id="projects">
+    <div class="section-container">
+        <div class="section-header animate-on-scroll">
+            <p class="section-tag">// 03. Opérations</p>
+            <h2 class="section-title">Articles & Projets</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- ── Onglets de filtrage ── -->
+        <div class="projects-tabs animate-on-scroll">
+            <button class="projects-tab-btn active" data-filter="all">// All</button>
+            <button class="projects-tab-btn" data-filter="Systèmes">🖥️ Systèmes</button>
+            <button class="projects-tab-btn" data-filter="Réseaux">🖧 Réseaux</button>
+            <button class="projects-tab-btn" data-filter="Outils">🛠️ Outils</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card animate-on-scroll" data-category="Outils">
+                <div class="project-header">
+                    <span class="project-icon">🔐</span>
+                    <span class="project-status status-active">Active</span>
+                </div>
+                <h3 class="project-title">KeepassXC</h3>
+                <p class="project-desc">
+                    Gestionnaire de mots de passe, open-source, 
+                    multiplateforme (Windows, macOS, Linux). Il permet de stocker, organiser, 
+                    générer et protéger l'ensemble de vos identifiants dans une base de données chiffrée locale.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">OpenSource</span>
+                    <span class="project-tag">Communautaire</span>
+                    <span class="project-tag">Github</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/outils/P1_KeePassXC.html" class="project-link">📄 Détails</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 
+            <div class="project-card animate-on-scroll" data-category="Réseaux">
+                <div class="project-header">
+                    <span class="project-icon">🌐</span>
+                    <span class="project-status status-active">Active</span>
+                </div>
+                <h3 class="project-title">InfraBuilder</h3>
+                <p class="project-desc">
+                    Automatisation complète du déploiement d'infrastructures réseau :
+                    VLANs, routage inter-VLAN, DHCP, DNS, et monitoring.
+                    Infrastructure as Code avec Ansible.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Ansible</span>
+                    <span class="project-tag">Terraform</span>
+                    <span class="project-tag">Cisco IOS</span>
+                    <span class="project-tag">YAML</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/Project_Template.html" class="project-link">📄 Détails</a>
+                    <a href="#" class="project-link">📂 Code source</a>
+                    <a href="#" class="project-link">📖 Documentation</a>
+                </div>
+            </div> -->
+
+            <!-- Project 3 
+            <div class="project-card animate-on-scroll" data-category="Systèmes">
+                <div class="project-header">
+                    <span class="project-icon">🛡️</span>
+                    <span class="project-status status-dev">En dev</span>
+                </div>
+                <h3 class="project-title">VulnScanner Pro</h3>
+                <p class="project-desc">
+                    Scanner de vulnérabilités automatisé ciblant les services réseau exposés.
+                    Génération de rapports conformes aux standards OWASP et CVE.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">Nmap</span>
+                    <span class="project-tag">SQLite</span>
+                    <span class="project-tag">API REST</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/Project_Template.html" class="project-link">📄 Détails</a>
+                    <a href="#" class="project-link">📂 Code source</a>
+                </div>
+            </div>-->
+
+            <!-- Project 4 
+            <div class="project-card animate-on-scroll" data-category="outils">
+                <div class="project-header">
+                    <span class="project-icon">🔐</span>
+                    <span class="project-status status-beta">Beta</span>
+                </div>
+                <h3 class="project-title">CryptoVault</h3>
+                <p class="project-desc">
+                    Gestionnaire de secrets et certificats SSL/TLS pour environnements
+                    multi-serveurs. Rotation automatique des clés et audit de conformité.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Go</span>
+                    <span class="project-tag">HashiCorp Vault</span>
+                    <span class="project-tag">PKI</span>
+                    <span class="project-tag">Let's Encrypt</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/Project_Template.html" class="project-link">📄 Détails</a>
+                    <a href="#" class="project-link">📂 Code source</a>
+                    <a href="#" class="project-link">🔗 Demo</a>
+                </div>
+            </div>-->
+
+            <!-- Project 5 
+            <div class="project-card animate-on-scroll" data-category="outils">
+                <div class="project-header">
+                    <span class="project-icon">📊</span>
+                    <span class="project-status status-active">Active</span>
+                </div>
+                <h3 class="project-title">NetTopology Mapper</h3>
+                <p class="project-desc">
+                    Outil de cartographie réseau automatisée avec détection d'équipements,
+                    visualisation de la topologie et export en formats multiples.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">SNMP</span>
+                    <span class="project-tag">D3.js</span>
+                    <span class="project-tag">GraphML</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/Project_Template.html" class="project-link">📄 Détails</a>
+                    <a href="#" class="project-link">📂 Code source</a>
+                    <a href="#" class="project-link">📖 Wiki</a>
+                </div>
+            </div>-->
+
+            <!-- Project 6 
+            <div class="project-card animate-on-scroll" data-category="outils">
+                <div class="project-header">
+                    <span class="project-icon">⚡</span>
+                    <span class="project-status status-archive">Archive</span>
+                </div>
+                <h3 class="project-title">HomeLab Cluster</h3>
+                <p class="project-desc">
+                    Cluster Proxmox personnel avec haute disponibilité, stockage Ceph,
+                    et stack de monitoring complète. Lab de test pour environnements de prod.
+                </p>
+                <div class="project-tags">
+                    <span class="project-tag">Proxmox</span>
+                    <span class="project-tag">Ceph</span>
+                    <span class="project-tag">Grafana</span>
+                    <span class="project-tag">Prometheus</span>
+                </div>
+                <div class="project-links">
+                    <a href="Projects/Project_Template.html" class="project-link">📄 Détails</a>
+                    <a href="#" class="project-link">📂 Code source</a>
+                    <a href="#" class="project-link">📖 Blog post</a>
+                </div> 
+            </div>-->
+        </div>
+    </div>
+</section>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div>
+                <div class="ascii-art">
+ ██████╗██╗   ██╗██████╗ ███████╗██████╗
+██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗
+██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝
+██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗
+╚██████╗   ██║   ██████╔╝███████╗██║  ██║
+ ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝
+      ══ PORTFOLIO v2.0 ══</div>
+                <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); max-width: 350px;">
+                    Navigating the digital frontier.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="#hero">Accueil</a></li>
+                    <li><a href="#about">Profil</a></li>
+                    <li><a href="#skills">Compétences</a></li>
+                    <li><a href="#projects">Projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Sys_Info</h4>
+                <div class="system-info">
+                    <div>
+                        <span class="sys-label">Heure:</span>
+                        <span class="sys-value" id="liveClock">--:--:--</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Ping:</span>
+                        <span class="sys-value" id="pingValue">-- ms</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">OS:</span>
+                        <span class="sys-value" id="osInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Navigateur:</span>
+                        <span class="sys-value" id="browserInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">IP Publique:</span>
+                        <span class="sys-value" id="userIP">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                <span>&copy;</span> <span id="year">2025</span> CYBER-TECH // All rights reserved. Built with <span style="color: var(--neon-magenta);">♥</span> & <span style="color: var(--neon-cyan);">code</span>
+            </p>
+            <p class="footer-terminal">
+                root@cyber:~$ <span id="footerCmd"></span><span style="animation: typing-cursor 0.7s step-end infinite; border-right: 2px solid var(--neon-green);">&nbsp;</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript externe -->
+<script src="js/main.js"></script>
+</body>
+</html>
