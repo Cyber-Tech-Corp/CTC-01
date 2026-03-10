@@ -67,8 +67,14 @@ body {
    MATRIX RAIN CANVAS
 ═══════════════════════════════════════════ */
 #matrix-canvas {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 0; opacity: 0.12;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    z-index: 0; 
+    opacity: 0.15;
+    background-color: #0a0a0f;
 }
 
 /* ═══════════════════════════════════════════
@@ -1065,14 +1071,23 @@ footer {
 /* Screenshot placeholder */
 .project-screenshot {
     width: 100%;
-    aspect-ratio: 16/9;
     background: var(--bg-card);
     border: 1px solid var(--border-cyber);
     border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
+}
+.project-screenshot a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .project-screenshot::before {
     content: '';
@@ -1081,7 +1096,7 @@ footer {
         0deg, transparent, transparent 2px,
         rgba(0,240,255,0.015) 2px, rgba(0,240,255,0.015) 4px
     );
-    pointer-events: none; /* ✅ Le pseudo-element ne bloque plus les events souris */
+    pointer-events: none; /*  Le pseudo-element ne bloque plus les events souris */
 }
 .project-screenshot-text {
     font-family: var(--font-mono);
@@ -1092,20 +1107,20 @@ footer {
 }
 .project-screenshot img {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     height: auto;
-    border-radius: 10px;
-    position: relative;        /* ✅ Au-dessus du ::before */
-    z-index: 1;                /* ✅ Au-dessus du ::before */
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /* ✅ Transition fluide */
+    object-fit:contain;        /* évite les déformations */
+    border-radius: 8px;
+    position: relative;        /*  Au-dessus du ::before */
+    z-index: 1;                /*  Au-dessus du ::before */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /*  Transition fluide */
     cursor: zoom-in;
-        
+
 }
 .project-screenshot img:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     box-shadow: 0 0 20px var(--neon-cyan);
 }
-
 
 /* Sidebar */
 .project-page-sidebar {}

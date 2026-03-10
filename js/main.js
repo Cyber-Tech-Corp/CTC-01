@@ -1,7 +1,7 @@
 (function() {
     'use strict';
 
-    /* ─── MATRIX RAIN ─── */
+    /* ─── MATRIX RAIN (avec devicePixelRatio & anti-reset) ─── */
     var matrixCanvas = document.getElementById('matrix-canvas');
     if (matrixCanvas) {
         var mCtx = matrixCanvas.getContext('2d');
@@ -9,15 +9,33 @@
         var matrixChars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEF<>{}[];:./\\|=+-*&^%$#@!';
         var fontSize = 14;
 
+        var lastW = 0, lastH = 0;
+
         function initMatrix() {
-            matrixCanvas.width = window.innerWidth;
-            matrixCanvas.height = window.innerHeight;
-            matrixCols = Math.floor(matrixCanvas.width / fontSize);
+            var dpr = window.devicePixelRatio || 1;
+            var cssWidth = window.innerWidth;
+            var cssHeight = window.innerHeight;
+
+            matrixCanvas.style.width = cssWidth + 'px';
+            matrixCanvas.style.height = cssHeight + 'px';
+
+            matrixCanvas.width = cssWidth * dpr;
+            matrixCanvas.height = cssHeight * dpr;
+
+            mCtx.setTransform(1, 0, 0, 1, 0, 0);
+            mCtx.scale(dpr, dpr);
+
+            matrixCols = Math.floor(cssWidth / fontSize);
             drops = new Array(matrixCols).fill(1).map(function() { return Math.random() * -100; });
+
+            mCtx.font = fontSize + 'px Share Tech Mono, monospace';
+
+            lastW = cssWidth;
+            lastH = cssHeight;
         }
 
         var matrixFrame = 0;
-        var matrixSpeed = 10; /* draw every Nth frame — higher = slower */
+        var matrixSpeed = 5;
 
         function drawMatrix() {
             matrixFrame++;
@@ -26,7 +44,7 @@
                 return;
             }
 
-            mCtx.fillStyle = 'rgba(10, 10, 15, 0.05)';
+            mCtx.fillStyle = 'rgba(2, 6, 23, 0.08)';
             mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
             mCtx.font = fontSize + 'px Share Tech Mono, monospace';
 
@@ -39,7 +57,7 @@
                 mCtx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
                 mCtx.fillText(char, x, y);
 
-                if (y > matrixCanvas.height && Math.random() > 0.98) {
+                if (y > window.innerHeight && Math.random() > 0.98) {
                     drops[i] = 0;
                 }
                 drops[i]++;
@@ -47,9 +65,20 @@
             requestAnimationFrame(drawMatrix);
         }
 
+        function onResizeMatrix() {
+            var w = window.innerWidth;
+            var h = window.innerHeight;
+            if (Math.abs(w - lastW) < 40 && Math.abs(h - lastH) < 40) {
+                return; // ignore petits changements (barre URL mobile)
+            }
+            initMatrix();
+        }
+
         initMatrix();
         drawMatrix();
+
         window.addEventListener('resize', initMatrix);
+        window.addEventListener('orientationchange', initMatrix);
     }
 
     /* ─── NAVBAR ─── */
@@ -401,7 +430,7 @@
                 });
             });
         });
-    }
+    }    
 
     /* ─── SMOOTH REVEAL on load ─── */
     window.addEventListener('load', function() {
