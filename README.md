@@ -13,14 +13,12 @@ Il regroupe et présente différents **logiciels, outils et ressources**, princi
 
 Certains outils présentés sont **open source**, d’autres non, mais tous ont été sélectionnés pour leur **fiabilité, leur pertinence et leur intérêt technique**.
 
-Ce site a pour objectif de servir à la fois de **vitrine personnelle** et d’**espace de découverte d’outils utiles**.
-
 ---
 
 ## 🎯 Objectifs
 
 * Présenter des **outils liés à la sécurité et à la confidentialité**
-* Partager des **ressources open source utiles**
+* Partager des **ressources open source**
 * Proposer un **espace de découverte de logiciels**
 * Mettre en avant des **solutions systèmes et réseaux**
 * Servir de **portfolio personnel**

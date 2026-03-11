@@ -68,17 +68,247 @@
         function onResizeMatrix() {
             var w = window.innerWidth;
             var h = window.innerHeight;
-            if (Math.abs(w - lastW) < 40 && Math.abs(h - lastH) < 40) {
-                return; // ignore petits changements (barre URL mobile)
+            if (Math.abs(w - lastW) < 50) {
+                return; 
             }
+
             initMatrix();
         }
 
         initMatrix();
         drawMatrix();
 
-        window.addEventListener('resize', initMatrix);
-        window.addEventListener('orientationchange', initMatrix);
+        window.addEventListener('resize', onResizeMatrix);
+        window.addEventListener('orientationchange', function() {
+            setTimeout(initMatrix, 200);
+        });
+    }
+
+    /* ═══════════════════════════════════════════
+       CYBER GALLERY — Auto-init from data-images
+    ═══════════════════════════════════════════ */
+    var galleries = document.querySelectorAll('.cyber-gallery[data-images]');
+
+    galleries.forEach(function(gallery) {
+        var images = gallery.getAttribute('data-images').split('|').filter(Boolean);
+        var alts = (gallery.getAttribute('data-alts') || '').split('|');
+        var count = images.length;
+        var currentSlide = 0;
+
+        // Set count for CSS (hides arrows/dots if 1)
+        gallery.setAttribute('data-count', count);
+
+        // Build HTML
+        var html = '';
+
+        // Counter badge
+        html += '<span class="gallery-counter"><span class="gallery-counter-current">1</span> / ' + count + '</span>';
+
+        // Viewport + track
+        html += '<div class="gallery-viewport">';
+        html += '<button class="gallery-arrow gallery-arrow--prev" aria-label="Previous">‹</button>';
+        html += '<button class="gallery-arrow gallery-arrow--next" aria-label="Next">›</button>';
+        html += '<div class="gallery-track">';
+        for (var i = 0; i < count; i++) {
+            html += '<div class="gallery-slide" data-index="' + i + '">';
+            html += '<img src="' + images[i] + '" alt="' + (alts[i] || 'Screenshot ' + (i + 1)) + '" loading="lazy" draggable="false">';
+            html += '</div>';
+            }
+        html += '</div></div>';
+
+        // Dots
+        html += '<div class="gallery-dots">';
+        for (var j = 0; j < count; j++) {
+            html += '<button class="gallery-dot' + (j === 0 ? ' active' : '') + '" data-index="' + j + '" aria-label="Image ' + (j + 1) + '"></button>';
+        }
+        html += '</div>';
+
+        gallery.innerHTML = html;
+
+        // Refs
+        var track = gallery.querySelector('.gallery-track');
+        var dots = gallery.querySelectorAll('.gallery-dot');
+        var counterEl = gallery.querySelector('.gallery-counter-current');
+        var prevBtn = gallery.querySelector('.gallery-arrow--prev');
+        var nextBtn = gallery.querySelector('.gallery-arrow--next');
+        var slides = gallery.querySelectorAll('.gallery-slide');
+
+        function goTo(idx) {
+            if (idx < 0) idx = count - 1;
+            if (idx >= count) idx = 0;
+            currentSlide = idx;
+            track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+            dots.forEach(function(d, di) { d.classList.toggle('active', di === idx); });
+            if (counterEl) counterEl.textContent = idx + 1;
+        }
+
+        // Arrow clicks
+        if (prevBtn) prevBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(currentSlide - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', function(e) { e.stopPropagation(); goTo(currentSlide + 1); });
+
+        // Dot clicks
+        dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                goTo(parseInt(this.getAttribute('data-index')));
+            });
+        });
+
+        // Click slide → open lightbox
+        slides.forEach(function(slide) {
+            slide.addEventListener('click', function() {
+                openLightbox(images, alts, parseInt(this.getAttribute('data-index')));
+            });
+        });
+
+        // Touch swipe support
+        var touchStartX = 0;
+        var touchStartY = 0;
+        var touchDeltaX = 0;
+        var isSwiping = false;
+        var viewport = gallery.querySelector('.gallery-viewport');
+
+        viewport.addEventListener('touchstart', function(e) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            touchDeltaX = 0;
+            isSwiping = false;
+            track.style.transition = 'none';
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', function(e) {
+            var dx = e.touches[0].clientX - touchStartX;
+            var dy = e.touches[0].clientY - touchStartY;
+
+            // Determine if horizontal swipe
+            if (!isSwiping && Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 10) {
+                isSwiping = true;
+            }
+
+            if (isSwiping) {
+                e.preventDefault();
+                touchDeltaX = dx;
+                var offset = -(currentSlide * 100) + (dx / viewport.offsetWidth * 100);
+                track.style.transform = 'translateX(' + offset + '%)';
+            }
+        }, { passive: false });
+
+        viewport.addEventListener('touchend', function() {
+            track.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            if (Math.abs(touchDeltaX) > 50) {
+                if (touchDeltaX < 0) goTo(currentSlide + 1);
+                else goTo(currentSlide - 1);
+            } else {
+                goTo(currentSlide);
+            }
+            touchDeltaX = 0;
+            isSwiping = false;
+        }, { passive: true });
+    });
+
+    /* ═══════════════════════════════════════════
+       LIGHTBOX
+    ═══════════════════════════════════════════ */
+    var lightbox, lightboxImg, lightboxClose, lightboxPrev, lightboxNext;
+    var lbImages = [];
+    var lbAlts = [];
+    var lbIndex = 0;
+
+    function ensureLightbox() {
+        if (lightbox) return;
+
+        lightbox = document.createElement('div');
+        lightbox.id = 'lightbox';
+        lightbox.className = 'lightbox-overlay';
+        lightbox.innerHTML =
+            '<button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>' +
+            '<button class="lightbox-arrow lightbox-arrow--prev" id="lightboxPrev" aria-label="Previous">&#8249;</button>' +
+            '<button class="lightbox-arrow lightbox-arrow--next" id="lightboxNext" aria-label="Next">&#8250;</button>' +
+            '<div class="lightbox-img-wrapper">' +
+                '<img id="lightboxImg" class="lightbox-img" src="" alt="" draggable="false">' +
+            '</div>';
+
+        document.body.appendChild(lightbox);
+
+        lightboxImg = document.getElementById('lightboxImg');
+        lightboxClose = document.getElementById('lightboxClose');
+        lightboxPrev = document.getElementById('lightboxPrev');
+        lightboxNext = document.getElementById('lightboxNext');
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', function(e) { e.stopPropagation(); lbGoTo(lbIndex - 1); });
+        lightboxNext.addEventListener('click', function(e) { e.stopPropagation(); lbGoTo(lbIndex + 1); });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-img-wrapper')) {
+                closeLightbox();
+            }
+        });
+
+        lightboxImg.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lbGoTo(lbIndex - 1);
+            if (e.key === 'ArrowRight') lbGoTo(lbIndex + 1);
+        });
+
+        // Lightbox swipe
+        var lbTouchStartX = 0;
+        lightbox.addEventListener('touchstart', function(e) {
+            lbTouchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', function(e) {
+            var dx = e.changedTouches[0].clientX - lbTouchStartX;
+            if (Math.abs(dx) > 60) {
+                if (dx < 0) lbGoTo(lbIndex + 1);
+                else lbGoTo(lbIndex - 1);
+            }
+        }, { passive: true });
+    }
+
+    function openLightbox(images, alts, index) {
+        ensureLightbox();
+        lbImages = images;
+        lbAlts = alts;
+        lbIndex = index;
+        lightboxImg.src = images[index];
+        lightboxImg.alt = alts[index] || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        var multi = images.length > 1;
+        lightboxPrev.style.display = multi ? 'flex' : 'none';
+        lightboxNext.style.display = multi ? 'flex' : 'none';
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        lightboxImg.src = '';
+    }
+
+    function lbGoTo(idx) {
+        if (idx < 0) idx = lbImages.length - 1;
+        if (idx >= lbImages.length) idx = 0;
+        lbIndex = idx;
+        lightboxImg.src = lbImages[idx];
+        lightboxImg.alt = lbAlts[idx] || '';
+    }
+
+    /* ═══════════════════════════════════════════
+       FIX PANEL TOGGLE
+    ═══════════════════════════════════════════ */
+    var fixPanel = document.getElementById('fixPanel');
+    var fixToggle = document.getElementById('fixToggle');
+    if (fixPanel && fixToggle) {
+        fixToggle.addEventListener('click', function() {
+            fixPanel.classList.toggle('collapsed');
+        });
     }
 
     /* ─── NAVBAR ─── */
@@ -168,7 +398,9 @@
         typewrite();
     }
 
-    /* ─── SCROLL ANIMATIONS ─── */
+    /* ═══════════════════════════════════════════
+       SCROLL ANIMATIONS (unique declaration)
+    ═══════════════════════════════════════════ */
     var observerOpts = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
     var scrollObserver = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {

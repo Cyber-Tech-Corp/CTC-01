@@ -68,13 +68,10 @@ body {
 ═══════════════════════════════════════════ */
 #matrix-canvas {
     position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
     z-index: 0; 
-    opacity: 0.15;
-    background-color: #0a0a0f;
+    opacity: 0.40;
 }
 
 /* ═══════════════════════════════════════════
@@ -1068,59 +1065,271 @@ footer {
     white-space: pre;
 }
 
-/* Screenshot placeholder */
-.project-screenshot {
+/* ═══════════════════════════════════════════
+   GALLERY — REMPLACEMENT de .project-screenshot
+═══════════════════════════════════════════ */
+
+/* ── Gallery Container ── */
+.cyber-gallery {
     width: 100%;
     background: var(--bg-card);
     border: 1px solid var(--border-cyber);
     border-radius: 4px;
-    display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
     margin-bottom: 1.5rem;
     position: relative;
     overflow: hidden;
 }
-.project-screenshot a {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.project-screenshot::before {
+
+/* ── Scanlines overlay on gallery ── */
+.cyber-gallery::before {
     content: '';
     position: absolute; inset: 0;
     background: repeating-linear-gradient(
         0deg, transparent, transparent 2px,
-        rgba(0,240,255,0.015) 2px, rgba(0,240,255,0.015) 4px
+        rgba(0, 240, 255, 0.015) 2px, rgba(0, 240, 255, 0.015) 4px
     );
-    pointer-events: none; /*  Le pseudo-element ne bloque plus les events souris */
+    pointer-events: none;
+    z-index: 2;
 }
-.project-screenshot-text {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    text-align: center;
-    z-index: 1;
-}
-.project-screenshot img {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    object-fit:contain;        /* évite les déformations */
-    border-radius: 8px;
-    position: relative;        /*  Au-dessus du ::before */
-    z-index: 1;                /*  Au-dessus du ::before */
-    transition: transform 0.4s ease, box-shadow 0.4s ease; /*  Transition fluide */
-    cursor: zoom-in;
 
+/* ── Image viewport ── */
+.gallery-viewport {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
-.project-screenshot img:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 20px var(--neon-cyan);
+
+.gallery-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
 }
+
+.gallery-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    aspect-ratio: 16 / 10;
+    cursor: pointer;
+    position: relative;
+}
+
+.gallery-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    /* PAS de transform:scale sur hover — ça casse le mobile */
+    transition: box-shadow 0.3s ease;
+    /* Empêcher le pinch-zoom natif sur l'image inline */
+    touch-action: manipulation;
+}
+
+/* Hover glow uniquement sur desktop (pas tactile) */
+@media (hover: hover) {
+    .gallery-slide img:hover {
+        box-shadow: 0 0 25px rgba(0, 240, 255, 0.2);
+    }
+}
+
+/* ── Navigation arrows ── */
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: rgba(10, 10, 20, 0.8);
+    border: 1px solid var(--border-cyber);
+    color: var(--neon-cyan);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+.gallery-arrow:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+}
+.gallery-arrow--prev { left: 8px; }
+.gallery-arrow--next { right: 8px; }
+
+/* Hide arrows if only 1 image */
+.cyber-gallery[data-count="1"] .gallery-arrow { display: none; }
+
+/* ── Dot indicators — cyberpunk style ── */
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 0.8rem 1rem;
+    background: rgba(5, 5, 15, 0.6);
+    border-top: 1px solid var(--border-cyber);
+}
+
+/* Hide dots if only 1 image */
+.cyber-gallery[data-count="1"] .gallery-dots { display: none; }
+
+.gallery-dot {
+    width: 20px;
+    height: 3px;
+    background: rgba(0, 240, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    transition: all 0.35s ease;
+}
+
+.gallery-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px -2px;
+    /* Bigger touch target */
+}
+
+.gallery-dot:hover {
+    background: rgba(0, 240, 255, 0.5);
+}
+
+.gallery-dot.active {
+    width: 32px;
+    background: var(--neon-cyan);
+    box-shadow: 0 0 8px var(--neon-cyan), 0 0 16px rgba(0, 240, 255, 0.3);
+}
+
+/* ── Image counter badge ── */
+.gallery-counter {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 5;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--neon-cyan);
+    background: rgba(10, 10, 20, 0.85);
+    border: 1px solid var(--border-cyber);
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Hide counter if only 1 image */
+.cyber-gallery[data-count="1"] .gallery-counter { display: none; }
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX — 
+═══════════════════════════════════════════ */
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(2, 6, 23, 0.95);
+    backdrop-filter: blur(8px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    cursor: zoom-out;
+    touch-action: pinch-zoom;
+}
+.lightbox-overlay.open {
+    display: flex;
+    opacity: 1;
+}
+
+.lightbox-img-wrapper {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img {
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--border-cyber);
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.15);
+    cursor: default;
+    touch-action: pinch-zoom;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 10001;
+    width: 40px;
+    height: 40px;
+    background: rgba(10, 10, 20, 0.8);
+    border: 1px solid var(--border-cyber);
+    color: var(--neon-cyan);
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.lightbox-close:hover {
+    background: rgba(255, 0, 222, 0.2);
+    border-color: var(--neon-magenta);
+    color: var(--neon-magenta);
+}
+
+/* Lightbox arrows */
+.lightbox-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+    background: rgba(10, 10, 20, 0.8);
+    border: 1px solid var(--border-cyber);
+    color: var(--neon-cyan);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.lightbox-arrow:hover {
+    background: rgba(0, 240, 255, 0.15);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+.lightbox-arrow--prev { left: 16px; }
+.lightbox-arrow--next { right: 16px; }
+
 
 /* Sidebar */
 .project-page-sidebar {}
