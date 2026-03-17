@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>// P1_KeePassXC</title>
+    <title>// O&O ShutUp10++</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
@@ -44,10 +44,10 @@
             <span class="sep">/</span>
             <a href="../../index.html#projects">Projets</a>
             <span class="sep">/</span>
-            <span style="color: var(--text-primary);">KeePassXC</span>
+            <span style="color: var(--text-primary);">O&O ShutUp10++</span>
         </div>
         <h1 class="project-page-title">
-            <span class="glitch-text" data-text="KeePassXC">KeePassXC</span>
+            <span class="glitch-text" data-text="O&O ShutUp10++">O&O ShutUp10++</span>
         </h1>
         <div class="project-page-meta">
             <div class="project-page-meta-item">
@@ -56,13 +56,13 @@
             </div>
             <div class="project-page-meta-item">
                 <span class="meta-label">Rôle:</span>
-                <span class="meta-value">Coffre-fort Numérique</span>
+                <span class="meta-value">Utilitaire système</span>
             </div>
         </div>
         <div class="project-page-tags">
-            <span class="project-tag">OpenSource</span>
-            <span class="project-tag">Communautaire</span>
-            <span class="project-tag">Github</span>
+            <span class="project-tag">Durcissement Windows</span>
+            <span class="project-tag">Anti-Télémétrie</span>
+            <span class="project-tag">Portable</span>
         </div>
     </div>
 </div>
@@ -77,23 +77,22 @@
 
         <!-- cyber-gallery -->
         <div class="cyber-gallery animate-on-scroll"
-            data-images="../1_Ressources/Img_Outils/KeePassXC_database_view.png|../1_Ressources/Img_Outils/edit_entry.png|../1_Ressources/Img_Outils/passphrase_generator.png|../1_Ressources/Img_Outils/database_reports.png"
-            data-alts="KeePassXC - Database View|edit - entry|passphrase - generator|database - reports">
+            data-images="../1_Ressources/Img_Outils/IO_O&O ShutUp10++/O&OShutUp10_View1.png|../1_Ressources/Img_Outils/IO_O&O ShutUp10++/O&OShutUp10_View2.png|../1_Ressources/Img_Outils/IO_O&O ShutUp10++/O&OShutUp10_View3.png"
+            data-alts="O&OShutUp10 - View1|O&OShutUp10 - Guide|O&OShutUp10 - Restauration">
         </div>
 
         <!-- Description -->
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Description</h2>
             <p>
-                KeePassXC (KeePass Cross-Platform Community Edition) est un gestionnaire de mots de passe open source, 
-                gratuit et multiplateforme (Windows, macOS, Linux). Fork moderne de KeePassX, il vous permet de stocker mots de passe,
-                clefs d’accès et TOTP dans un fichier local chiffré (AES-256 / ChaCha20), 
-                avec une interface intuitive et des fonctionnalités avancées (auto-typage, intégration navigateur, YubiKey).
+                O&O ShutUp10++ est un outil gratuit de configuration de la confidentialité sous windows, développé par la société allemande O&O Software GmbH (Berlin). 
+                Il offre une interface centralisée permettant de contrôler, désactiver ou activer les innombrables paramètres de télémétrie, 
+                de collecte de données et de fonctions intrusives intégrés nativement dans Windows 10 et Windows 11.
             </p>
             <p>
-                KeePassXC combine interface réactive, simplicité d’usage et performances légères, le tout stocké localement sur votre appareil ou sur un support dédié (version portable).
-                Contrairement aux solutions cloud, aucune donnée ne transite par des serveurs tiers, ce qui en fait un outil fiable et auditable. 
-                Recommandé par l’ANSSI et l’EFF.
+                Windows, par défaut, collecte un volume considérable de données utilisateur : historique de navigation, données de localisation, identifiant publicitaire, diagnostics système, reconnaissance vocale, synchronisation cloud, suggestions personnalisées, etc. 
+                Ces réglages sont dispersés dans les menus de paramètres, le registre, les stratégies de groupe et les services système, 
+                Les modifier manuellement requiert une connaissance approfondie de l'architecture Windows, ce qui les rend difficilement accessibles pour un utilisateur normal.
             </p>
         </div>
 
@@ -101,8 +100,9 @@
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Objectifs</h2>
             <ul>
-                <li>Centraliser et protéger tous vos identifiants et données sensibles dans un coffre-fort chiffré local, 
-                    accessible uniquement par vous, sans jamais exposer vos informations sur Internet ni dépendre d’un service cloud propriétaire.
+                <li>
+                    Redonner à l'utilisateur le contrôle sur ses données personnelles dans l'environnement Windows, 
+                    en centralisant l'ensemble des paramètres de confidentialité Windows dans une interface unique et lisible.          
                 </li>
             </ul>
         </div>
@@ -111,40 +111,44 @@
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Points forts</h2>
             <ul>
-                <li><strong style="color: var(--neon-cyan);">100% Hors-ligne :</strong> Aucune donnée n'est envoyée sur le cloud. La base de données reste sur votre machine (mais peut être synchronisée manuellement via Nextcloud, Google Drive, etc.).</li>
-                <li><strong style="color: var(--neon-cyan);">Générateur de mots de passe :</strong> Création de phrases secrètes ou de mots de passe complexes personnalisables.</li>
-                <li><strong style="color: var(--neon-cyan);">Authentification multifacteur (2FA) :</strong> Générateur de codes TOTP intégré directement dans l'application.</li>
-                <li><strong style="color: var(--neon-cyan);">Auto-Type (Saisie automatique) :</strong> Le logiciel peut simuler les frappes au clavier pour remplir les identifiants sur n'importe quelle application de bureau (pas seulement le navigateur).</li>
-                <li><strong style="color: var(--neon-cyan);">Intégration YubiKey :</strong> Sécurisation de l'ouverture du coffre-fort grâce à une clé physique (Challenge-Response).</li>
-                <li><strong style="color: var(--neon-cyan);">Protection contre les attaques par force brute (KDF) :</strong> Utilisation de Argon2 pour ralentir les tentatives de déchiffrement.</li>
-                <li><strong style="color: var(--neon-cyan);">Gestion des identifiants :</strong> Organisation par groupes et sous-groupes : Classement des mots de passe (travail, banque, réseaux sociaux, etc.).</li>
-                <li><strong style="color: var(--neon-cyan);">Analyse de sécurité de la base (Health Check) :</strong> Détecte les mots de passe faibles, réutilisés ou expirés.</li>
-                <li><strong style="color: var(--neon-cyan);">Verrouillage automatique :</strong> La base peut se verrouiller automatiquement après un temps d’inactivité ou lors du verrouillage de la session.</li>
-                <li><strong style="color: var(--neon-cyan);">Mode portable :</strong> Peut être utilisé depuis une clef USB sans installation.</li>
+                <li><strong style="color: var(--neon-cyan);">Centralisation des paramètres de confidentialité :</strong> Accès unifié à plus d'une centaine de réglages couvrant : télémétrie, identifiant publicitaire, Cortana, localisation, caméra/micro, historique d'activité, synchronisation, Windows Update, Edge, suggestions, Wi-Fi Sense, apps en arrière-plan, Widgets, Copilot, Recall.</li>
+                <li><strong style="color: var(--neon-cyan);">Descriptions détaillées :</strong> Chaque commutateur est accompagné d'une explication précise de ce que le paramètre contrôle, de ce qui se passe si on le modifie, et des conséquences possibles.</li>
+                <li><strong style="color: var(--neon-cyan);">Système de code couleur 🟢🟡🔴 :</strong> Chaque paramètre est accompagné d'un indicateur de risque visuel.</li>
+                <li><strong style="color: var(--neon-cyan);">Application portable :</strong> Aucune installation n'est nécessaire, Cela signifie aucune trace résiduelle dans le système. Les modifications appliquées aux paramètres Windows persistent indépendamment de l'outil.</li>
+                <li><strong style="color: var(--neon-cyan);">Points de restauration :</strong> Avant toute modification, il propose de créer un point de restauration système. En cas de problème (fonctionnalité cassée, comportement inattendu), il est possible de revenir à l'état précédent en quelques minutes.</li>
+                <li><strong style="color: var(--neon-cyan);">Export / Import de configuration :</strong> La configuration complète peut être exportée dans un fichier `.cfg` et réimportée ultérieurement ou sur une autre machine.</li>            
+            </ul>
+        </div>
 
-
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Limites</h2>
+            <ul>
+                <li><strong style="color: var(--neon-red);">Risque de casser des fonctionnalités :</strong> Certains paramètres marqués en rouge et jaune peuvent désactiver des fonctions légitimes. Un utilisateur inexpérimenté qui désactive tout sans lire les descriptions risque d'être surpris par certains effets de bord.</li>
+                <li><strong style="color: var(--neon-red);">Dépendance à la réactivité de l'éditeur :</strong> Chaque nouvelle build de Windows peut introduire de nouveaux paramètres de télémétrie. La couverture de l'outil dépend donc de la rapidité avec laquelle O&O Software met à jour son logiciel pour inclure ces nouveaux réglages.</li>
+                <li><strong style="color: var(--neon-red);">Logiciel propriétaire :</strong> Contrairement à des outils open source, le code source de ShutUp10++ n'est pas publiquement auditable. L'utilisateur doit donc faire confiance à O&O Software quant au comportement réel de l'application.</li>
+                <li><strong style="color: var(--neon-red);">Automatisation limitée :</strong> il n'y a pas d'API, pas de module PowerShell, pas d'intégration native avec GPO ou Intune. Pour un déploiement entreprise à grande échelle, les stratégies de groupe ou les solutions MDM restent plus adaptées.</li>
             </ul>
         </div>
 
         <!-- Conclusion -->
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Conclusion</h2>
-            <p>   
-                KeePassXC représente une solution mature, sécurisée et transparente pour la gestion des mots de passe. 
-                Son approche offline-first et open source en fait un outil de confiance dans un écosystème où les violations de données de gestionnaires cloud font régulièrement la une.
-            </p> 
+           <p>   
+                O&O ShutUp10++ est un utilitaire de configuration pertinent pour les utilisateurs souhaitant réduire la collecte de données de Windows et reprendre la main sur des paramètres de confidentialité souvent dispersés ou peu accessibles. 
+                Ses principaux atouts sont sa simplicité d’utilisation, sa portabilité, la centralisation des réglages et la granularité des options proposées. 
+                Il constitue une solution particulièrement intéressante pour le durcissement rapide d’un poste Windows.            
             <p>
-                Essayez-le ! Un petit temps d’adaptation est nécessaire pour les non-initiés, mais une fois habitué, il est difficile de s’en passer. Si vous découvrez ce logiciel, vous trouverez sur le site tous les liens nécessaires pour bien commencer.
+                En revanche, il doit être utilisé avec méthode. Une approche trop agressive peut dégrader certaines fonctionnalités natives du système ou compliquer l’usage quotidien de Windows.
+                Il ne bloque pas l'intégralité du tracking et il ne remplace pas une stratégie de confidentialité globale (VPN, DNS privé, navigateur respectueux, bonnes pratiques numériques), 
+                mais il constitue une première ligne de défense essentielle contre la collecte de données intrusive de Windows, en agissant directement au niveau du système d'exploitation.
             </p>    
             <p>
-                Merci à toute la communauté KeePassXC pour son travail et le partage de ce projet.
-                Si vous utilisez ces outils, pensez à soutenir les projets open source : respectez le travail des contributeurs, signalez les bugs si vous le pouvez et partagez vos retours.
+                En résumé : simple, léger, efficace et portable. Exactement ce qu'on attend d'un outil de confidentialité.
             </p>  
             <p> 
-                Protégez vos données et votre esprit,<br>
+                Protégez vos données et votre vie privée.<br>
                 @+
             </p>
-
         </div>
 
         <!-- Retour -->
@@ -157,77 +161,39 @@
 
         <!-- Infos projet -->
         <div class="sidebar-card animate-on-scroll">
-            <h3 class="sidebar-card-title">Informations</h3>
+            <h3 class="sidebar-card-title">Infos Projet</h3>
             <div class="sidebar-info-row">
                 <span class="s-label">Type:</span>
-                <span class="s-value">Gestionnaire de mots de passe</span>
+                <span class="s-value">Outil de confidentialité</span>
             </div>
             <div class="sidebar-info-row">
                 <span class="s-label">Statut:</span>
                 <span class="s-value" style="color: var(--neon-green);">Active</span>
             </div>
             <div class="sidebar-info-row">
-                <span class="s-label">Version Actuel:</span>
-                <span class="s-value">2.7.11</span>
+                <span class="s-label">Version Actuelle</span>
+                <span class="s-value">2.2.1024</span>
             </div>
             <div class="sidebar-info-row">
                 <span class="s-label">Licence:</span>
-                <span class="s-value">GNU GPL v2 / GPL v3</span>
+                <span class="s-value">Freeware</span>
             </div>
             <div class="sidebar-info-row">
-                <span class="s-label">Platform:</span>
-                <span class="s-value">Cross-platform</span>
+                <span class="s-label">Plateforme:</span>
+                <span class="s-value">Windows 10/11 (x86 & x64)</span>
             </div>
             <div class="sidebar-info-row">
-                <span class="s-label">Début:</span>
-                <span class="s-value">2016</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">Mise à jour:</span>
-                <span class="s-value">Régulières</span>
+                <span class="s-label">Création:</span>
+                <span class="s-value">2015</span>
             </div>
         </div>
 
         <!-- Liens -->
         <div class="sidebar-card animate-on-scroll">
-            <h3 class="sidebar-card-title">Liens</h3>
+            <h3 class="sidebar-card-title">Lien</h3>
             <ul class="sidebar-links">
-                <li><a href="https://github.com/keepassxreboot/keepassxc" target="_blank" rel="noopener noreferrer">📂 Repository GitHub</a></li>
-                <li><a href="https://keepassxc.org" target="_blank" rel="noopener noreferrer">🔗 Site officiel</a></li>
-                <li><a href="https://keepassxc.org/docs/KeePassXC_GettingStarted" target="_blank" rel="noopener noreferrer">📖 Documentation</a></li>
-                <li><a href="https://github.com/keepassxreboot/keepassxc/issues" target="_blank" rel="noopener noreferrer">🐛 Issues / Bugs</a></li>
-                <li><a href="https://keepassxc.org/blog/" target="_blank" rel="noopener noreferrer">📊 Changelog</a></li>
-                <li><a href="https://www.youtube.com/watch?v=qSHCbqwbWo8" target="_blank" rel="noopener noreferrer">🌐 Excellente vidéo d'IT-Connect</a></li>
+                <li><a href="https://www.oo-software.com/fr/shutup10" target="_blank" rel="noopener noreferrer">🔗 Site officiel</a></li>
             </ul>
-        </div>
-
-        <!-- Stack technique -->
-        <div class="sidebar-card animate-on-scroll">
-            <h3 class="sidebar-card-title">Stack Technique</h3>
-            <div class="sidebar-info-row">
-                <span class="s-label">Backend:</span>
-                <span class="s-value">C++</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">Frontend:</span>
-                <span class="s-value">Qt 5 / Qt 6</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">Chiffrement:</span>
-                <span class="s-value">Botan</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">KDF:</span>
-                <span class="s-value">Argon2id</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">Cipher:</span>
-                <span class="s-value">AES-256-CBC, ChaCha20, Twofish</span>
-            </div>
-            <div class="sidebar-info-row">
-                <span class="s-label">Format BDD:</span>
-                <span class="s-value">KDBX 4.1</span>
-            </div>
         </div>
 
         <!-- Chronologie -->
@@ -235,20 +201,24 @@
             <h3 class="sidebar-card-title">Chronologie</h3>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2016</div>
-                    <div class="timeline-text">Naissance de KeePassXC | Fork communautaire de KeePassX </div>
+                    <div class="timeline-date">2015</div>
+                    <div class="timeline-text">Lancement initial, Réponse directe à la télémétrie agressive de Windows 10.</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2020</div>
-                    <div class="timeline-text">v2.5 / v2.6 — Maturité | Support YubiKey amélioré </div>
+                    <div class="timeline-date">2018</div>
+                    <div class="timeline-text">Contexte RGPD, Sensibilisation massive à la protection des données, Adoption croissante de l'outil.</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2022</div>
-                    <div class="timeline-text">v2.7.x — Sécurité renforcée | Migration vers Qt 6</div>
+                    <div class="timeline-date">2021</div>
+                    <div class="timeline-text">Renommage en "ShutUp10++", Extension de la compatibilité à Windows 11.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-text">Adaptation aux fonctions IA, Couverture de Recall, Copilot+, Nouveaux paramètres de télémétrie liés à l'IA.</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2025</div>
-                    <div class="timeline-text">v2.7.9+ — Présent | Maintenance active | Communauté grandissante (26k+ ⭐ GitHub) </div>
+                    <div class="timeline-text">Outil toujours activement maintenu, Version 2.2.1024.</div>
                 </div>
             </div>
         </div>
