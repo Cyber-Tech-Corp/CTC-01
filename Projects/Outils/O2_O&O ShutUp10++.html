@@ -85,24 +85,18 @@
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Description</h2>
             <p>
-                O&O ShutUp10++ est un outil gratuit de configuration de la confidentialité sous windows, développé par la société allemande O&O Software GmbH (Berlin). 
-                Il offre une interface centralisée permettant de contrôler, désactiver ou activer les innombrables paramètres de télémétrie, 
-                de collecte de données et de fonctions intrusives intégrés nativement dans Windows 10 et Windows 11.
-            </p>
-            <p>
-                Windows, par défaut, collecte un volume considérable de données utilisateur : historique de navigation, données de localisation, identifiant publicitaire, diagnostics système, reconnaissance vocale, synchronisation cloud, suggestions personnalisées, etc. 
-                Ces réglages sont dispersés dans les menus de paramètres, le registre, les stratégies de groupe et les services système, 
-                Les modifier manuellement requiert une connaissance approfondie de l'architecture Windows, ce qui les rend difficilement accessibles pour un utilisateur normal.
+                O&O ShutUp10++ est un utilitaire de configuration pertinent pour les utilisateurs souhaitant réduire la collecte de données de Windows, grâce à son interface unifiée de configuration des paramètres de confidentialité. 
+                L'outil modifie directement via des commutateurs on/off mappés sur des clés de registre, des stratégies locales et l'état de services système liés à la télémétrie, au tracking publicitaire, à la collecte de diagnostics et aux fonctionnalités cloud/IA.
             </p>
         </div>
 
         <!-- Objectifs -->
         <div class="project-section animate-on-scroll">
-            <h2 class="project-section-title">//Objectifs</h2>
+            <h2 class="project-section-title">//Périmètre couvert</h2>
             <ul>
                 <li>
-                    Redonner à l'utilisateur le contrôle sur ses données personnelles dans l'environnement Windows, 
-                    en centralisant l'ensemble des paramètres de confidentialité Windows dans une interface unique et lisible.          
+                    Télémétrie · Identifiant publicitaire · Cortana · Localisation · Caméra/Micro · Historique d'activité 
+                    · Synchronisation · Windows Update (partiellement) · Edge · Suggestions · Wi-Fi Sense · Apps arrière-plan · Widgets · Copilot · Recall          
                 </li>
             </ul>
         </div>
@@ -111,22 +105,20 @@
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Points forts</h2>
             <ul>
-                <li><strong style="color: var(--neon-cyan);">Centralisation des paramètres de confidentialité :</strong> Accès unifié à plus d'une centaine de réglages couvrant : télémétrie, identifiant publicitaire, Cortana, localisation, caméra/micro, historique d'activité, synchronisation, Windows Update, Edge, suggestions, Wi-Fi Sense, apps en arrière-plan, Widgets, Copilot, Recall.</li>
-                <li><strong style="color: var(--neon-cyan);">Descriptions détaillées :</strong> Chaque commutateur est accompagné d'une explication précise de ce que le paramètre contrôle, de ce qui se passe si on le modifie, et des conséquences possibles.</li>
-                <li><strong style="color: var(--neon-cyan);">Système de code couleur 🟢🟡🔴 :</strong> Chaque paramètre est accompagné d'un indicateur de risque visuel.</li>
-                <li><strong style="color: var(--neon-cyan);">Application portable :</strong> Aucune installation n'est nécessaire, Cela signifie aucune trace résiduelle dans le système. Les modifications appliquées aux paramètres Windows persistent indépendamment de l'outil.</li>
-                <li><strong style="color: var(--neon-cyan);">Points de restauration :</strong> Avant toute modification, il propose de créer un point de restauration système. En cas de problème (fonctionnalité cassée, comportement inattendu), il est possible de revenir à l'état précédent en quelques minutes.</li>
-                <li><strong style="color: var(--neon-cyan);">Export / Import de configuration :</strong> La configuration complète peut être exportée dans un fichier `.cfg` et réimportée ultérieurement ou sur une autre machine.</li>            
+                <li><strong style="color: var(--neon-cyan);">Centralisation :</strong> Accès unifié à ~140 paramètres regroupés.</li>
+                <li><strong style="color: var(--neon-cyan);">Classification du risque  :</strong> Chaque paramètre est accompagné d'un indicateur 🟢🟡🔴 de risque visuel.</li>
+                <li><strong style="color: var(--neon-cyan);">Mode portable :</strong> Utilisable depuis une clé USB, sans installation.</li>
+                <li><strong style="color: var(--neon-cyan);">Snapshot :</strong> Avant toute modification, il propose de créer un point de restauration système.</li>
+                <li><strong style="color: var(--neon-cyan);">Export/import:</strong> Réplication rapide d’une configuration via un fichier .cfg.</li>            
             </ul>
         </div>
 
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Limites</h2>
             <ul>
-                <li><strong style="color: var(--neon-red);">Risque de casser des fonctionnalités :</strong> Certains paramètres marqués en rouge et jaune peuvent désactiver des fonctions légitimes. Un utilisateur inexpérimenté qui désactive tout sans lire les descriptions risque d'être surpris par certains effets de bord.</li>
-                <li><strong style="color: var(--neon-red);">Dépendance à la réactivité de l'éditeur :</strong> Chaque nouvelle build de Windows peut introduire de nouveaux paramètres de télémétrie. La couverture de l'outil dépend donc de la rapidité avec laquelle O&O Software met à jour son logiciel pour inclure ces nouveaux réglages.</li>
-                <li><strong style="color: var(--neon-red);">Logiciel propriétaire :</strong> Contrairement à des outils open source, le code source de ShutUp10++ n'est pas publiquement auditable. L'utilisateur doit donc faire confiance à O&O Software quant au comportement réel de l'application.</li>
-                <li><strong style="color: var(--neon-red);">Automatisation limitée :</strong> il n'y a pas d'API, pas de module PowerShell, pas d'intégration native avec GPO ou Intune. Pour un déploiement entreprise à grande échelle, les stratégies de groupe ou les solutions MDM restent plus adaptées.</li>
+                <li><strong style="color: var(--neon-red);">Risque fonctionnel :</strong> La désactivation agressive (paramètres 🔴🟡) peuvent désactiver des fonctions légitimes. Un utilisateur inexpérimenté qui désactive tout sans lire les descriptions risque d'être surpris par certains effets de bord.</li>
+                <li><strong style="color: var(--neon-red);">Réactivité dépendante de l'éditeur :</strong> Les nouvelles builds Windows introduisent régulièrement de nouveaux vecteurs de télémétrie. Délai de couverture non garanti.</li>
+                <li><strong style="color: var(--neon-red);">Pas d'automatisation :</strong> Aucun CLI, pas de module PowerShell, pas d'intégration GPO/Intune. Inadapté au déploiement en entreprise.</li>
             </ul>
         </div>
 
@@ -134,16 +126,11 @@
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Conclusion</h2>
            <p>   
-                O&O ShutUp10++ est un utilitaire de configuration pertinent pour les utilisateurs souhaitant réduire la collecte de données de Windows et reprendre la main sur des paramètres de confidentialité souvent dispersés ou peu accessibles. 
-                Ses principaux atouts sont sa simplicité d’utilisation, sa portabilité, la centralisation des réglages et la granularité des options proposées. 
-                Il constitue une solution particulièrement intéressante pour le durcissement rapide d’un poste Windows.            
-            <p>
-                En revanche, il doit être utilisé avec méthode. Une approche trop agressive peut dégrader certaines fonctionnalités natives du système ou compliquer l’usage quotidien de Windows.
-                Il ne bloque pas l'intégralité du tracking et il ne remplace pas une stratégie de confidentialité globale (VPN, DNS privé, navigateur respectueux, bonnes pratiques numériques), 
-                mais il constitue une première ligne de défense essentielle contre la collecte de données intrusive de Windows, en agissant directement au niveau du système d'exploitation.
+                Outil pertinent pour le hardening rapide d'un poste Windows individuel. Efficace comme première couche de réduction de surface de collecte. 
+                À compléter impérativement par une stratégie réseau (DNS privé, firewall) et des pratiques utilisateur adaptées.          
             </p>    
             <p>
-                En résumé : simple, léger, efficace et portable. Exactement ce qu'on attend d'un outil de confidentialité.
+                Alternative open source recommandée si l’auditabilité, l’automatisation et l’intégrabilité en déploiement sont des critères (`Sophia Script`).
             </p>  
             <p> 
                 Protégez vos données et votre vie privée.<br>

@@ -112,25 +112,23 @@
             <h3>🔒 Sécurité ---</h3>
             <ul>
                 <li><strong style="color: var(--neon-cyan);">Chiffrement robuste :</strong> AES-256-CBC, ChaCha20 ou Twofish au choix, via la bibliothèque Botan.</li>
-                <li><strong style="color: var(--neon-cyan);">KDF Argon2id :</strong> fonction de dérivation de clé résistante aux attaques par force brute et aux attaques GPU/ASIC.</li>
-                <li><strong style="color: var(--neon-cyan);">Authentification renforcée du coffre :</strong> mot de passe maître + fichier-clé + YubiKey (Challenge-Response). Les trois facteurs sont combinables.</li>
-                <li><strong style="color: var(--neon-cyan);">Verrouillage automatique :</strong> après un temps d'inactivité configurable ou lors du verrouillage de la session.</li>
-                <li><strong style="color: var(--neon-cyan);">Audit de sécurité intégré (Health Check) :</strong> détection des mots de passe faibles, réutilisés, expirés ou compromis (via Have I Been Pwned, optionnel).</li>
+                <li><strong style="color: var(--neon-cyan);">KDF Argon2id :</strong> Fonction de dérivation de clé résistante aux attaques par force brute et aux attaques GPU/ASIC.</li>
+                <li><strong style="color: var(--neon-cyan);">Authentification renforcée :</strong> Mot de passe maître + fichier-clé + YubiKey. Les trois facteurs sont combinables.</li>
+                <li><strong style="color: var(--neon-cyan);">Verrouillage automatique :</strong> Après un temps d'inactivité configurable ou lors du verrouillage de la session.</li>
+                <li><strong style="color: var(--neon-cyan);">Audit de sécurité intégré (Health Check) :</strong> Détection des mots de passe faibles, réutilisés, expirés ou compromis.</li>
             </ul>
 
                 <p>&nbsp;</p>
 
             <h3>⚙️ Fonctionnalités ---</h3>   
             <ul>
-                <li><strong style="color: var(--neon-cyan);">Générateur de mots de passe :</strong> mots de passe aléatoires ou phrases secrètes (diceware), longueur et jeux de caractères personnalisables.</li>
-                <li><strong style="color: var(--neon-cyan);">Auto-Type :</strong> saisie automatique par simulation de frappes clavier, compatible avec n'importe quelle application de bureau.</li>
+                <li><strong style="color: var(--neon-cyan);">Générateur de mots de passe :</strong> Mots de passe aléatoires ou phrases secrètes personnalisables.</li>
+                <li><strong style="color: var(--neon-cyan);">Auto-Type :</strong> Saisie automatique par simulation de frappes clavier.</li>
                 <li><strong style="color: var(--neon-cyan);">Extension navigateur :</strong> KeePassXC-Browser (Firefox, Edge, Brave…) pour le remplissage automatique sur le web.</li>
-                <li><strong style="color: var(--neon-cyan);">Agent SSH intégré :</strong> stockage et déverrouillage de clés SSH directement depuis le coffre.</li>
-                <li><strong style="color: var(--neon-cyan);">Organisation flexible :</strong> groupes, sous-groupes, tags, icônes personnalisées, pièces jointes chiffrées.</li>
-                <li><strong style="color: var(--neon-cyan);">Import/Export :</strong> import depuis CSV, 1Password, Bitwarden, LastPass, KeePass et autres formats.</li>
-                <li><strong style="color: var(--neon-cyan);">Mode portable :</strong> utilisable depuis une clé USB, sans installation.</li>
-                <li><strong style="color: var(--neon-cyan);">TOTP intégré :</strong> génération de codes d'authentification à deux facteurs directement dans l'application. ⚠️ Voir avertissement ci-dessous.</li>
-
+                <li><strong style="color: var(--neon-cyan);">Agent SSH intégré :</strong> Stockage et déverrouillage de clés SSH directement depuis le coffre.</li>
+                <li><strong style="color: var(--neon-cyan);">Organisation flexible :</strong> Groupes, sous-groupes, tags, icônes personnalisées, pièces jointes chiffrées.</li>
+                <li><strong style="color: var(--neon-cyan);">Import/Export :</strong> Import depuis CSV, 1Password, Bitwarden, LastPass, KeePass et autres formats.</li>
+                <li><strong style="color: var(--neon-cyan);">Mode portable :</strong> Utilisable depuis une clé USB, sans installation.</li>
             </ul>
         </div>
 
@@ -138,23 +136,18 @@
             <h2 class="project-section-title">//Limites</h2>
             <ul>
                 <li><strong style="color: var(--neon-red);">Responsabilité de la sauvegarde :</strong> aucun filet de sécurité cloud. Si le fichier .kdbx est perdu, corrompu ou supprimé sans sauvegarde, les données sont irrécupérables. cette liberté implique aussi plus de responsabilité.</li>
-                <li><strong style="color: var(--neon-red);">Pas de synchronisation intégrée :</strong> pour retrouver sa base sur plusieurs appareils, il faut généralement passer par une solution tierce (Nextcloud, Syncthing, Google Drive, dans ce dernier cas, la dimension « 100 % hors-ligne » ne s'applique plus).</li>
+                <li><strong style="color: var(--neon-red);">Pas de synchronisation intégrée :</strong> pour retrouver sa base sur plusieurs appareils, il faut généralement passer par une solution tierce (Nextcloud, Syncthing, Google Drive, et la dimension « 100 % hors-ligne » ne s'applique plus).</li>
                 <li><strong style="color: var(--neon-red);">Courbe d'apprentissage :</strong> l'interface est fonctionnelle mais moins immédiate que les solutions grand public (Bitwarden, 1Password). Un temps de prise en main est nécessaire.</li>
             </ul>
-            <p>
-                "⚠️ À propos du TOTP intégré : stocker les codes TOTP dans le même coffre que les mots de passe est pratique, mais réduit l'intérêt du 2FA. Le principe de l'authentification à deux facteurs repose sur la séparation des facteurs. 
-                Si un attaquant accède au coffre, il obtient les deux. Pour une sécurité optimale, utilisez une application TOTP distincte (Aegis, 2FAS…) ou une clé matérielle."
-            </p>
         </div>
 
         <!-- Conclusion -->
         <div class="project-section animate-on-scroll">
             <h2 class="project-section-title">//Conclusion</h2>
             <p>   
-                KeePassXC est une solution mature, transparente et sécurisée pour la gestion des mots de passe. 
-                Son approche offline-first et son code ouvert en font un outil de confiance, particulièrement pertinent dans un contexte où les violations de données touchent régulièrement les gestionnaires cloud (LastPass 2022, Norton 2023…).            
-            <p>
-                Ce n’est pas la solution la plus assistée, mais c’est précisément ce qui fait sa force : vous gardez la main sur vos données. Si vous acceptez une légère courbe d’apprentissage et une gestion plus autonome, KeePassXC fait partie des références du domaine.
+                KeePassXC fait partie des références dans le domaine de la gestion de mots de passe locale et auditable. 
+                C’est un choix pertinent si le modèle de menace exclut la confiance envers un fournisseur cloud. 
+                Cette indépendance nécessite toutefois de maintenir des sauvegardes rigoureuses et d’acquérir rapidement les bonnes pratiques pour exploiter pleinement l’application.            
             </p>    
             <p>
                 Merci à toute la communauté KeePassXC pour la qualité de ce projet.
