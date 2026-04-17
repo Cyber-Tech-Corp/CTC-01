@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>// Oracle VM VirtualBox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<!-- Scanlines overlay -->
+<div class="scanlines"></div>
+
+<!-- Matrix Rain -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="../../index.html" class="nav-logo">CYBER<span>-TECH</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../../index.html">Accueil</a></li>
+            <li><a href="../../index.html#about">Profil</a></li>
+            <li><a href="../../index.html#skills">Skills</a></li>
+            <li><a href="../../index.html#projects">Projets</a></li>
+        </ul>
+        <div class="nav-status">
+            <div class="status-dot"></div>
+            <span>SYSTEM::ONLINE</span>
+        </div>
+        <button class="burger" id="burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══ PROJECT HERO ═══ -->
+<div class="project-page-hero">
+    <div class="project-page-hero-inner">
+        <div class="project-page-breadcrumb">
+            <a href="../../index.html">Accueil</a>
+            <span class="sep">/</span>
+            <a href="../../index.html#projects">Projets</a>
+            <span class="sep">/</span>
+            <span style="color: var(--text-primary);">Oracle VM virtualBox</span>
+        </div>
+        <h1 class="project-page-title">
+            <span class="glitch-text" data-text="Oracle VM virtualBox">Oracle VM virtualBox</span>
+        </h1>
+        <div class="project-page-meta">
+            <div class="project-page-meta-item">
+                <span class="meta-label">Statut:</span>
+                <span class="project-status status-active">Active</span>
+            </div>
+            <div class="project-page-meta-item">
+                <span class="meta-label">Rôle:</span>
+                <span class="meta-value">Virtualisation Informatique</span>
+            </div>
+        </div>
+        <div class="project-page-tags">
+            <span class="project-tag">Virtualisation</span>
+            <span class="project-tag">Lab & Test</span>
+            <span class="project-tag">Open Source</span>
+        </div>
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ PROJECT BODY ═══ -->
+<div class="project-page-body">
+
+    <!-- Main Content -->
+    <div class="project-page-main">
+
+        <!-- cyber-gallery -->
+        <div class="cyber-gallery animate-on-scroll"
+            data-images="..\1_Ressources\Img_Systèmes\IS_Oracle VM VirtualBox\OracleVMVirtualBox_View1.png|..\1_Ressources\Img_Systèmes\IS_Oracle VM VirtualBox\OracleVMVirtualBox_View2.png|..\1_Ressources\Img_Systèmes\IS_Oracle VM VirtualBox\OracleVMVirtualBox_View3.png"
+            data-alts="Oracle VM VirtualBox - Accueil|Oracle VM VirtualBox - Machines|Oracle VM VirtualBox - Paramètres">
+        </div>
+
+        <!-- Description -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Description</h2>
+            <p>
+                Oracle VM VirtualBox est un hyperviseur de type 2 (hosted) fonctionnant au-dessus d'un système d'exploitation hôte. 
+                Il implémente une couche de virtualisation matérielle permettant l'exécution simultanée de plusieurs systèmes invités isolés
+                via l'allocation dynamique de ressources CPU, mémoire, stockage et réseau.
+            </p>
+            <p>
+                L’architecture repose sur un VMM (Virtual Machine Monitor) fonctionnant en ring-0 et ring-3, 
+                s’appuyant sur la virtualisation assistée par matériel (Intel VT-x/AMD-V) et l’émulation des périphériques. 
+                Le frontend basé sur Qt fournit une interface de gestion centralisée, complétée par une CLI (VBoxManage) et un SDK COM/XPCOM pour l’automatisation.
+            </p>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Périmètre couvert</h2>
+            <ul>
+                <li><strong style="color: var(--neon-cyan);">Virtualisation :</strong> Intel VT-x/AMD-V · Nested virtualization · Paravirtualisation (VirtIO) · Snapshots différentiels · Live migration (expérimental) · USB passthrough · PCI passthrough (limité) · TPM 2.0 virtuel · UEFI Secure Boot · Export/Import OVF/OVA · Clonage linked/full · Chiffrement AES-XTS</li>
+                <li><strong style="color: var(--neon-cyan);">Réseau :</strong> NAT · NAT Network · Bridge · Host-Only · Internal Network · Generic Driver · Cloud Network · Port forwarding · VLAN tagging</li>
+                <li><strong style="color: var(--neon-cyan);">Stockage :</strong> VDI · VMDK · VHD/VHDX · HDD · QCOW2 (lecture) · Disques dynamiques/fixes · Snapshots multi-niveaux · Storage controllers (IDE/SATA/SCSI/SAS/NVMe/USB)</li>
+                <li><strong style="color: var(--neon-cyan);">Intégration hôte/invité :</strong> Dossiers partagés (VBoxSF) · Presse-papier bidirectionnel · Glisser-déposer · Résolution dynamique · Accélération 3D (OpenGL 3.0, DirectX 11) · Enregistrement vidéo · VRDP (RDP distant)</li>
+            </ul>
+        </div>
+
+        <!-- Fonctionnalités -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Points forts</h2>
+            <ul>
+                <li><strong style="color: var(--neon-cyan);">Multi-plateforme :</strong> Binaires disponibles pour Windows, Linux et macOS</li>
+                <li><strong style="color: var(--neon-cyan);">Support OS invités :</strong> Large compatibilité (100+ OS) incluant Windows (NT4 → 11), Linux (2.4 → 6.x)</li>
+                <li><strong style="color: var(--neon-cyan);">Snapshots différentiels :</strong> Sauvegarde instantanée de l'état complet (RAM, registres CPU, disques). Structure arborescente permettant des branches de test multiples</li>
+                <li><strong style="color: var(--neon-cyan);">Formats interopérables :</strong> Import/export OVF/OVA (standard DMTF) ; prise en charge et conversion des formats VDI, VMDK et VHD</li>
+                <li><strong style="color: var(--neon-cyan);">API complète :</strong> SDK COM/XPCOM multi-langage (notamment Python, Java, C++) et interface CLI complète via VBoxManage</li>
+                <li><strong style="color: var(--neon-cyan);">Extension Pack :</strong> Modules propriétaires additionnels, Ajoute les fonctions pro (USB3, VRDP, chiffrement, PXE boot, NVMe virtuel)</li>
+            </ul>
+        </div>
+
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Limites</h2>
+            <ul>
+                <li><strong style="color: var(--neon-red);">Performances :</strong> Overhead typique d’un hyperviseur de type 2 (variable selon les charges). Accélération 3D limitée (OpenGL ~3.x / DirectX partiel), inadaptée au gaming ou aux usages GPU intensifs (IA)</li>
+                <li><strong style="color: var(--neon-red);">Pas de gestion centralisée :</strong> Pas de plateforme centralisée native (type vCenter ou Proxmox VE). Gestion principalement locale, VM par VM. Pas de live migration native</li>
+                <li><strong style="color: var(--neon-red);">Dépendance matérielle :</strong> Virtualisation matérielle (Intel VT-x / AMD-V) fortement recommandée pour de bonnes performances. Conflits possibles avec Microsoft Hyper-V / WSL2 sur Windows, pouvant impacter les performances ou le fonctionnement.</li>
+                <li><strong style="color: var(--neon-red);">Scalabilité :</strong> Limitée par les ressources de l’hôte. Le nombre de VM simultanées dépend fortement de la RAM et du CPU</li>
+            </ul>
+        </div>
+
+        <!-- Bonnes Pratiques -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Bonnes Pratiques</h2>
+            <p>
+                - <b>Snapshots ≠ backups :</b> les snapshots ne remplacent pas une sauvegarde, exporter régulièrement les VM en OVA ou copier les VDI pour archivage externe<br>
+                - <b>Extension Pack :</b> recommandé pour USB 2.0/3.0, RDP et fonctionnalités avancées (non indispensable mais utile)<br>
+                - <b>Guest Additions :</b> à installer systématiquement pour améliorer performances et intégration (gain variable)<br>
+                - <b>Paravirtualisation :</b> adapter selon l’OS invité (KVM pour Linux, Hyper-V pour Windows)<br>
+                - <b>Nested virtualization :</b> support partiel, dépend du CPU/hôte, à vérifier avant usage (ex : Docker dans VM)<br>
+                - <b>Réseau Bridge :</b> attention à l’exposition directe sur le réseau local, vérifier firewall et configuration<br>
+                - <b>RAM :</b> ne pas dépasser ~70 % de la RAM hôte pour préserver la stabilité<br>
+                - <b>CPU :</b> limiter à ~50–70 % des cœurs pour éviter la contention<br>
+                - <b>Stockage :</b> privilégier SSD/NVMe et limiter les snapshots pour de meilleures performances<br>
+                - <b>Désactivation des fonctionnalités Hyper-V de l’hôte Windows :</b> recommandée pour améliorer les performances et la stabilité de Oracle VM VirtualBox
+            </p>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="project-section animate-on-scroll">
+            <h2 class="project-section-title">//Conclusion</h2>
+            <p>   
+                L'hyperviseur s’impose comme une solution de virtualisation de type 2 adaptée aux environnements desktop et aux laboratoires. 
+                Son architecture permet un déploiement rapide pour des cas d’usage tels que le développement, les tests ou la formation.          
+            </p>    
+            <p>
+                La gestion des snapshots et des sauvegardes des images VDI est indispensable pour garantir la résilience des environnements.
+            </p>  
+            <p>
+                Toutefois, ses limitations en termes de performances, de scalabilité et d’automatisation le rendent inadapté aux infrastructures critiques, où des solutions basées sur KVM/QEMU, VmWare Workstation ou des plateformes comme Proxmox VE sont à privilégier.
+            </p>  
+
+            <p> 
+                Protégez vos données et votre vie privée.<br>
+                @+
+            </p>
+
+        </div>
+
+        <!-- Retour -->
+        <a href="../../index.html#projects" class="back-link animate-on-scroll">← Retour aux projets</a>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div class="project-page-sidebar">
+
+        <!-- Infos projet -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Informations</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Type:</span>
+                <span class="s-value">Hyperviseur de type 2</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Statut:</span>
+                <span class="s-value" style="color: var(--neon-green);">Activement maintenu</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Version Actuelle:</span>
+                <span class="s-value">7.2.6</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Licence:</span>
+                <span class="s-value">GPL v2</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Création:</span>
+                <span class="s-value">2007 (par Innotek)</span>
+            </div>
+        </div>
+
+        <!-- Liens -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Liens</h3>
+            <ul class="sidebar-links">
+                <li><a href="https://github.com/VirtualBox/virtualbox" target="_blank" rel="noopener noreferrer">📂 Repository GitHub</a></li>
+                <li><a href="https://www.virtualbox.org" target="_blank" rel="noopener noreferrer">🔗 Site officiel</a></li>
+                <li><a href="https://www.virtualbox.org/manual/UserManual.html" target="_blank" rel="noopener noreferrer">📖 Documentation</a></li>
+                <li><a href="https://github.com/VirtualBox/virtualbox/issues" target="_blank" rel="noopener noreferrer">🐛 Issues / Bugs</a></li>
+                <li><a href="https://www.virtualbox.org/wiki/Changelog" target="_blank" rel="noopener noreferrer">📊 Changelog</a></li>
+                <li><a href="https://www.youtube.com/watch?v=MBFE5ArVHIM" target="_blank" rel="noopener noreferrer">🌐 Vidéo d'installation d'IT-Connect</a></li>
+                <li><a href="https://www.youtube.com/watch?v=iPPKNc3appk" target="_blank" rel="noopener noreferrer">🌐 Vidéo Réseaux Virtuel d'IT-Connect</a></li>
+            </ul>
+        </div>
+
+        <!-- Stack technique -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Stack Technique</h3>
+            <div class="sidebar-info-row">
+                <span class="s-label">Langages:</span>
+                <span class="s-value">C, C++, Assembly x86</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Frontend/GUI:</span>
+                <span class="s-value">Qt 5.x</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Virtualisation CPU:</span>
+                <span class="s-value">Intel VT-x, AMD-V</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Réseau virtuel:</span>
+                <span class="s-value">NAT Engine, Bridge</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Stockage:</span>
+                <span class="s-value">VDI (natif), VMDK, VHD, HDD</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Chiffrement:</span>
+                <span class="s-value">AES-XTS 128/256</span>
+            </div>
+            <div class="sidebar-info-row">
+                <span class="s-label">Deploy:</span>
+                <span class="s-value"> Import / Export OVA, OVF</span>
+            </div>
+        </div>
+
+        <!-- Chronologie -->
+        <div class="sidebar-card animate-on-scroll">
+            <h3 class="sidebar-card-title">Chronologie</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2007</div>
+                    <div class="timeline-text">Lancement VirtualBox 1.0 par Innotek</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2010</div>
+                    <div class="timeline-text">Rachat par Oracle -> devient Oracle VM VirtualBox</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018</div>
+                    <div class="timeline-text">(v6.0) Refonte totale de l'interface & Support 3D amélioré</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-text">(v6.1) : support macOS Big Sur, noyau hardened</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022</div>
+                    <div class="timeline-text"> (v7.0) : MAJEURE - Support Windows 11, UEFI Secure Boot, chiffrement complet des VM, TPM virtuel</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-text"> (v7.1) : Nouvelle UI moderne (style Windows 11/macOS), mode sombre natif, support Apple Silicon optimisé, Wayland sur Linux</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-text"> (v7.2) : Améliorations des performances générales, Meilleur support de Linux récents, Optimisations réseau et stockage </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="cyber-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div>
+                <div class="ascii-art">
+ ██████╗██╗   ██╗██████╗ ███████╗██████╗
+██╔════╝╚██╗ ██╔╝██╔══██╗██╔════╝██╔══██╗
+██║      ╚████╔╝ ██████╔╝█████╗  ██████╔╝
+██║       ╚██╔╝  ██╔══██╗██╔══╝  ██╔══██╗
+╚██████╗   ██║   ██████╔╝███████╗██║  ██║
+ ╚═════╝   ╚═╝   ╚═════╝ ╚══════╝╚═╝  ╚═╝
+      ══ PORTFOLIO v2.0 ══</div>
+                <p style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); max-width: 350px;">
+                    Navigating the digital frontier.
+                </p>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Navigation</h4>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">Accueil</a></li>
+                    <li><a href="../../index.html#about">Profil</a></li>
+                    <li><a href="../../index.html#skills">Compétences</a></li>
+                    <li><a href="../../index.html#projects">Projets</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-section-title">Sys_Info</h4>
+                <div class="system-info">
+                    <div>
+                        <span class="sys-label">Heure:</span>
+                        <span class="sys-value" id="liveClock">--:--:--</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Ping:</span>
+                        <span class="sys-value" id="pingValue">-- ms</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">OS:</span>
+                        <span class="sys-value" id="osInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">Navigateur:</span>
+                        <span class="sys-value" id="browserInfo">Detecting...</span>
+                    </div>
+                    <div>
+                        <span class="sys-label">IP Publique:</span>
+                        <span class="sys-value" id="userIP">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">
+                <span>&copy;</span> <span id="year">2025</span> Cyber-Tech // All rights reserved. Built with <span style="color: var(--neon-magenta);">♥</span> & <span style="color: var(--neon-cyan);">code</span>
+            </p>
+            <p class="footer-terminal">
+                root@cyber:~$ <span id="footerCmd"></span><span style="animation: typing-cursor 0.7s step-end infinite; border-right: 2px solid var(--neon-green);">&nbsp;</span>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript externe -->
+<script src="../../js/main.js"></script>
+</body>
+</html>
